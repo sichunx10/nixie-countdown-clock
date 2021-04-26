@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name Nixie_KiCAD_Library)(type Legacy)(uri ${KIPRJMOD}/Nixie_KiCAD_Library.lib)(options "")(descr ""))
+  (lib (name Electrical-rescue)(type Legacy)(uri ${KIPRJMOD}/Electrical-rescue.lib)(options "")(descr ""))
+  (lib (name dk_Transistors-Bipolar-BJT-Single)(type Legacy)(uri C:/Users/punde/Downloads/digikey-kicad-library-master/digikey-kicad-library-master/digikey-symbols/dk_Transistors-Bipolar-BJT-Single.lib)(options "")(descr ""))
+)
