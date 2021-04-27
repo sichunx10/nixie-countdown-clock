@@ -5,13 +5,13 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 5
 Title "Nixie Tube Clock Host Board"
-Date "2021-04-20"
-Rev "v01.1"
+Date "2021-04-26"
+Rev "v01.2"
 Comp "University of Alberta (AlbertaSat)"
-Comment1 "License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)"
-Comment2 "Steven Knudsen (ECE dept., Faculty of Engineering, University of Alberta)."
-Comment3 "This schematic was designed with the assistance of "
-Comment4 "Author: Pundeep Hundal                   Co-author: Sichun Xu"
+Comment1 ""
+Comment2 "License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)"
+Comment3 "Co-author: Sichun Xu"
+Comment4 "Author: Pundeep Hundal"
 $EndDescr
 $Sheet
 S 1000 1000 2000 1500

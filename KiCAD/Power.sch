@@ -5,19 +5,19 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 2 5
 Title "Nixie Tube Clock Host Board"
-Date "2021-04-20"
-Rev "v01.1"
+Date "2021-04-26"
+Rev "v01.2"
 Comp "University of Alberta (AlbertaSat)"
-Comment1 "License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)"
-Comment2 "Steven Knudsen (ECE dept., Faculty of Engineering, University of Alberta)."
-Comment3 "This schematic was designed with the assistance of "
-Comment4 "Author: Pundeep Hundal                   Co-author: Sichun Xu"
+Comment1 ""
+Comment2 "License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)"
+Comment3 "Co-author: Sichun Xu"
+Comment4 "Author: Pundeep Hundal"
 $EndDescr
 $Comp
-L Connector_Generic:Conn_01x01 J1
+L Connector_Generic:Conn_01x01 J201
 U 1 1 60925BA8
 P 2500 3050
-F 0 "J1" V 2600 3100 50  0000 R CNN
+F 0 "J201" V 2600 3150 50  0000 R CNN
 F 1 "170V" V 2500 3300 50  0000 R CNN
 F 2 "" H 2500 3050 50  0001 C CNN
 F 3 "~" H 2500 3050 50  0001 C CNN
@@ -25,10 +25,10 @@ F 3 "~" H 2500 3050 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x01 J2
+L Connector_Generic:Conn_01x01 J202
 U 1 1 60926684
 P 5500 3050
-F 0 "J2" V 5600 3100 50  0000 R CNN
+F 0 "J202" V 5600 3150 50  0000 R CNN
 F 1 "5V" V 5500 3200 50  0000 R CNN
 F 2 "" H 5500 3050 50  0001 C CNN
 F 3 "~" H 5500 3050 50  0001 C CNN
@@ -58,10 +58,10 @@ F 3 "" H 5500 3900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C_Small C1
+L Device:C_Small C201
 U 1 1 6092E1DA
 P 2500 3600
-F 0 "C1" H 2592 3646 50  0000 L CNN
+F 0 "C201" H 2592 3646 50  0000 L CNN
 F 1 "10uF" H 2592 3555 50  0000 L CNN
 F 2 "" H 2500 3600 50  0001 C CNN
 F 3 "~" H 2500 3600 50  0001 C CNN
@@ -69,10 +69,10 @@ F 3 "~" H 2500 3600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C_Small C2
+L Device:C_Small C202
 U 1 1 60939809
 P 5500 3650
-F 0 "C2" H 5592 3696 50  0000 L CNN
+F 0 "C202" H 5592 3696 50  0000 L CNN
 F 1 "1uF" H 5592 3605 50  0000 L CNN
 F 2 "" H 5500 3650 50  0001 C CNN
 F 3 "~" H 5500 3650 50  0001 C CNN
@@ -146,10 +146,10 @@ $EndComp
 Wire Wire Line
 	8500 3200 8500 3300
 $Comp
-L Device:C_Small C3
+L Device:C_Small C203
 U 1 1 6093035A
 P 8500 3600
-F 0 "C3" H 8592 3646 50  0000 L CNN
+F 0 "C203" H 8592 3646 50  0000 L CNN
 F 1 "1uF" H 8592 3555 50  0000 L CNN
 F 2 "" H 8500 3600 50  0001 C CNN
 F 3 "~" H 8500 3600 50  0001 C CNN
@@ -168,10 +168,10 @@ F 3 "" H 8500 3850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector_Generic:Conn_01x01 J3
+L Connector_Generic:Conn_01x01 J203
 U 1 1 60926D85
 P 8500 3000
-F 0 "J3" V 8600 3050 50  0000 R CNN
+F 0 "J203" V 8600 3100 50  0000 R CNN
 F 1 "3.3V" V 8500 3250 50  0000 R CNN
 F 2 "" H 8500 3000 50  0001 C CNN
 F 3 "~" H 8500 3000 50  0001 C CNN

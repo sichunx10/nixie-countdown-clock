@@ -5,13 +5,13 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 3 5
 Title "Nixie Tube Clock Host Board"
-Date "2021-04-20"
-Rev "v01.1"
+Date "2021-04-26"
+Rev "v01.2"
 Comp "University of Alberta (AlbertaSat)"
-Comment1 "License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)"
-Comment2 "Steven Knudsen (ECE dept., Faculty of Engineering, University of Alberta)."
-Comment3 "This schematic was designed with the assistance of "
-Comment4 "Author: Pundeep Hundal                   Co-author: Sichun Xu"
+Comment1 ""
+Comment2 "License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)"
+Comment3 "Co-author: Sichun Xu"
+Comment4 "Author: Pundeep Hundal"
 $EndDescr
 $Comp
 L power:GND #PWR?
@@ -55,8 +55,8 @@ L Device:C_Small C?
 U 1 1 6096D84C
 P 2550 2800
 AR Path="/6096D84C" Ref="C?"  Part="1" 
-AR Path="/6091BF76/6096D84C" Ref="C4"  Part="1" 
-F 0 "C4" H 2400 2850 50  0000 L CNN
+AR Path="/6091BF76/6096D84C" Ref="C302"  Part="1" 
+F 0 "C302" H 2300 2850 50  0000 L CNN
 F 1 "100nF" H 2300 2750 50  0000 L CNN
 F 2 "" H 2550 2800 50  0001 C CNN
 F 3 "~" H 2550 2800 50  0001 C CNN
@@ -70,8 +70,8 @@ L Switch:SW_Push SW?
 U 1 1 6096D859
 P 2150 2750
 AR Path="/6096D859" Ref="SW?"  Part="1" 
-AR Path="/6091BF76/6096D859" Ref="SW1"  Part="1" 
-F 0 "SW1" V 2100 2550 50  0000 L CNN
+AR Path="/6091BF76/6096D859" Ref="SW301"  Part="1" 
+F 0 "SW301" V 2100 2500 50  0000 L CNN
 F 1 "Reset" V 2200 2500 50  0000 L CNN
 F 2 "" H 2150 2950 50  0001 C CNN
 F 3 "~" H 2150 2950 50  0001 C CNN
@@ -182,8 +182,8 @@ L Nixie_KiCAD_Library:MAS6180 U?
 U 1 1 6096D892
 P 9250 1800
 AR Path="/6096D892" Ref="U?"  Part="1" 
-AR Path="/6091BF76/6096D892" Ref="U3"  Part="1" 
-F 0 "U3" H 9200 2250 50  0000 L CNN
+AR Path="/6091BF76/6096D892" Ref="U302"  Part="1" 
+F 0 "U302" H 9200 2250 50  0000 L CNN
 F 1 "MAS6180" H 9100 2150 50  0000 L CNN
 F 2 "" H 9250 1800 50  0001 C CNN
 F 3 "" H 9250 1800 50  0001 C CNN
@@ -195,8 +195,8 @@ L Device:C_Small C?
 U 1 1 6096D898
 P 7600 4300
 AR Path="/6096D898" Ref="C?"  Part="1" 
-AR Path="/6091BF76/6096D898" Ref="C6"  Part="1" 
-F 0 "C6" H 7450 4350 50  0000 L CNN
+AR Path="/6091BF76/6096D898" Ref="C304"  Part="1" 
+F 0 "C304" H 7350 4350 50  0000 L CNN
 F 1 "100nF" H 7350 4250 50  0000 L CNN
 F 2 "" H 7600 4300 50  0001 C CNN
 F 3 "~" H 7600 4300 50  0001 C CNN
@@ -271,8 +271,8 @@ L Device:R_Small R?
 U 1 1 6096D8BC
 P 9800 5000
 AR Path="/6096D8BC" Ref="R?"  Part="1" 
-AR Path="/6091BF76/6096D8BC" Ref="R2"  Part="1" 
-F 0 "R2" H 9650 4950 50  0000 L CNN
+AR Path="/6091BF76/6096D8BC" Ref="R302"  Part="1" 
+F 0 "R302" H 9550 4950 50  0000 L CNN
 F 1 "4.7k" H 9600 5050 50  0000 L CNN
 F 2 "" H 9800 5000 50  0001 C CNN
 F 3 "~" H 9800 5000 50  0001 C CNN
@@ -284,8 +284,8 @@ L Device:R_Small R?
 U 1 1 6096D8C2
 P 9550 5000
 AR Path="/6096D8C2" Ref="R?"  Part="1" 
-AR Path="/6091BF76/6096D8C2" Ref="R1"  Part="1" 
-F 0 "R1" H 9600 4950 50  0000 L CNN
+AR Path="/6091BF76/6096D8C2" Ref="R301"  Part="1" 
+F 0 "R301" H 9600 4950 50  0000 L CNN
 F 1 "4.7k" H 9600 5050 50  0000 L CNN
 F 2 "" H 9550 5000 50  0001 C CNN
 F 3 "~" H 9550 5000 50  0001 C CNN
@@ -366,9 +366,9 @@ L Nixie_KiCAD_Library:DS3231 U?
 U 1 1 6096D8EF
 P 8500 4900
 AR Path="/6096D8EF" Ref="U?"  Part="1" 
-AR Path="/6091BF76/6096D8EF" Ref="U2"  Part="1" 
-F 0 "U2" H 8500 5475 50  0000 C CNN
-F 1 "DS3231" H 8500 5384 50  0000 C CNN
+AR Path="/6091BF76/6096D8EF" Ref="U303"  Part="1" 
+F 0 "U303" H 8500 5475 50  0000 C CNN
+F 1 "DS3231" H 8500 5350 50  0000 C CNN
 F 2 "" H 8500 4900 50  0001 C CNN
 F 3 "" H 8500 4900 50  0001 C CNN
 	1    8500 4900
@@ -409,8 +409,8 @@ L Device:C_Small C?
 U 1 1 6096D903
 P 8300 1400
 AR Path="/6096D903" Ref="C?"  Part="1" 
-AR Path="/6091BF76/6096D903" Ref="C7"  Part="1" 
-F 0 "C7" H 8392 1446 50  0000 L CNN
+AR Path="/6091BF76/6096D903" Ref="C303"  Part="1" 
+F 0 "C303" H 8392 1446 50  0000 L CNN
 F 1 "100nF" H 8392 1355 50  0000 L CNN
 F 2 "" H 8300 1400 50  0001 C CNN
 F 3 "~" H 8300 1400 50  0001 C CNN
@@ -422,8 +422,8 @@ L Nixie_KiCAD_Library:JST_connector P?
 U 1 1 6096D911
 P 1550 6450
 AR Path="/6096D911" Ref="P?"  Part="1" 
-AR Path="/6091BF76/6096D911" Ref="P1"  Part="1" 
-F 0 "P1" H 1458 6915 50  0000 C CNN
+AR Path="/6091BF76/6096D911" Ref="P301"  Part="1" 
+F 0 "P301" H 1458 6915 50  0000 C CNN
 F 1 "JST_connector" H 1458 6824 50  0000 C CNN
 F 2 "" H 1550 6450 50  0001 C CNN
 F 3 "" H 1550 6450 50  0001 C CNN
@@ -499,8 +499,8 @@ L Device:C_Small C?
 U 1 1 6089E69D
 P 3000 1400
 AR Path="/6089E69D" Ref="C?"  Part="1" 
-AR Path="/6091BF76/6089E69D" Ref="C5"  Part="1" 
-F 0 "C5" H 3092 1446 50  0000 L CNN
+AR Path="/6091BF76/6089E69D" Ref="C301"  Part="1" 
+F 0 "C301" H 3092 1446 50  0000 L CNN
 F 1 "100nF" H 3092 1355 50  0000 L CNN
 F 2 "" H 3000 1400 50  0001 C CNN
 F 3 "~" H 3000 1400 50  0001 C CNN
@@ -508,10 +508,10 @@ F 3 "~" H 3000 1400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L MCU_Module:NUCLEO64-F411RE U1
+L MCU_Module:NUCLEO64-F411RE U301
 U 1 1 608AA55B
 P 3950 3850
-F 0 "U1" H 3050 5750 50  0000 C CNN
+F 0 "U301" H 3050 5750 50  0000 C CNN
 F 1 "NUCLEO64-F411RE" H 4900 1950 50  0000 C CNN
 F 2 "Module:ST_Morpho_Connector_144_STLink" H 4500 1950 50  0001 L CNN
 F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/data_brief/DM00105918.pdf" H 3050 2450 50  0001 C CNN

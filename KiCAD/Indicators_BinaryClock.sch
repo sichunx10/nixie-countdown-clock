@@ -5,21 +5,21 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 5 5
 Title "Nixie Tube Clock Host Board"
-Date "2021-04-20"
-Rev "v01.1"
+Date "2021-04-26"
+Rev "v01.2"
 Comp "University of Alberta (AlbertaSat)"
-Comment1 "License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)"
-Comment2 "Steven Knudsen (ECE dept., Faculty of Engineering, University of Alberta)."
-Comment3 "This schematic was designed with the assistance of "
-Comment4 "Author: Pundeep Hundal                   Co-author: Sichun Xu"
+Comment1 ""
+Comment2 "License: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)"
+Comment3 "Co-author: Sichun Xu"
+Comment4 "Author: Pundeep Hundal"
 $EndDescr
 $Comp
 L Device:R_Small R?
 U 1 1 60A0A440
 P 3250 1100
 AR Path="/60A0A440" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A440" Ref="R14"  Part="1" 
-F 0 "R14" H 3309 1146 50  0000 L CNN
+AR Path="/6091E188/60A0A440" Ref="R501"  Part="1" 
+F 0 "R501" H 3309 1146 50  0000 L CNN
 F 1 "220k" H 3309 1055 50  0000 L CNN
 F 2 "" H 3250 1100 50  0001 C CNN
 F 3 "~" H 3250 1100 50  0001 C CNN
@@ -31,8 +31,8 @@ L Device:R_Small R?
 U 1 1 60A0A446
 P 3250 2250
 AR Path="/60A0A446" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A446" Ref="R15"  Part="1" 
-F 0 "R15" H 3309 2296 50  0000 L CNN
+AR Path="/6091E188/60A0A446" Ref="R503"  Part="1" 
+F 0 "R503" H 3309 2296 50  0000 L CNN
 F 1 "220k" H 3309 2205 50  0000 L CNN
 F 2 "" H 3250 2250 50  0001 C CNN
 F 3 "~" H 3250 2250 50  0001 C CNN
@@ -50,8 +50,8 @@ L Device:R_Small R?
 U 1 1 60A0A44F
 P 4450 1100
 AR Path="/60A0A44F" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A44F" Ref="R16"  Part="1" 
-F 0 "R16" H 4509 1146 50  0000 L CNN
+AR Path="/6091E188/60A0A44F" Ref="R502"  Part="1" 
+F 0 "R502" H 4509 1146 50  0000 L CNN
 F 1 "220k" H 4509 1055 50  0000 L CNN
 F 2 "" H 4450 1100 50  0001 C CNN
 F 3 "~" H 4450 1100 50  0001 C CNN
@@ -63,8 +63,8 @@ L Device:R_Small R?
 U 1 1 60A0A455
 P 4450 2250
 AR Path="/60A0A455" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A455" Ref="R17"  Part="1" 
-F 0 "R17" H 4509 2296 50  0000 L CNN
+AR Path="/6091E188/60A0A455" Ref="R504"  Part="1" 
+F 0 "R504" H 4509 2296 50  0000 L CNN
 F 1 "220k" H 4509 2205 50  0000 L CNN
 F 2 "" H 4450 2250 50  0001 C CNN
 F 3 "~" H 4450 2250 50  0001 C CNN
@@ -109,8 +109,8 @@ L Device:R_Small R?
 U 1 1 60A0A471
 P 2400 3200
 AR Path="/60A0A471" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A471" Ref="R9"  Part="1" 
-F 0 "R9" V 2300 3150 50  0000 L CNN
+AR Path="/6091E188/60A0A471" Ref="R505"  Part="1" 
+F 0 "R505" V 2300 3150 50  0000 L CNN
 F 1 "130k" V 2500 3100 50  0000 L CNN
 F 2 "" H 2400 3200 50  0001 C CNN
 F 3 "~" H 2400 3200 50  0001 C CNN
@@ -275,8 +275,8 @@ L Nixie_KiCAD_Library:INS-1 D?
 U 1 1 60A0A4C3
 P 3250 2600
 AR Path="/60A0A4C3" Ref="D?"  Part="1" 
-AR Path="/6091E188/60A0A4C3" Ref="D2"  Part="1" 
-F 0 "D2" H 3328 2646 50  0000 L CNN
+AR Path="/6091E188/60A0A4C3" Ref="D503"  Part="1" 
+F 0 "D503" H 3328 2646 50  0000 L CNN
 F 1 "INS-1" H 3328 2555 50  0000 L CNN
 F 2 "" H 3250 2600 50  0001 C CNN
 F 3 "" H 3250 2600 50  0001 C CNN
@@ -288,8 +288,8 @@ L Nixie_KiCAD_Library:INS-1 D?
 U 1 1 60A0A4C9
 P 3250 1450
 AR Path="/60A0A4C9" Ref="D?"  Part="1" 
-AR Path="/6091E188/60A0A4C9" Ref="D1"  Part="1" 
-F 0 "D1" H 3328 1496 50  0000 L CNN
+AR Path="/6091E188/60A0A4C9" Ref="D501"  Part="1" 
+F 0 "D501" H 3328 1496 50  0000 L CNN
 F 1 "INS-1" H 3328 1405 50  0000 L CNN
 F 2 "" H 3250 1450 50  0001 C CNN
 F 3 "" H 3250 1450 50  0001 C CNN
@@ -301,8 +301,8 @@ L Nixie_KiCAD_Library:INS-1 D?
 U 1 1 60A0A4CF
 P 4450 1500
 AR Path="/60A0A4CF" Ref="D?"  Part="1" 
-AR Path="/6091E188/60A0A4CF" Ref="D7"  Part="1" 
-F 0 "D7" H 4528 1546 50  0000 L CNN
+AR Path="/6091E188/60A0A4CF" Ref="D502"  Part="1" 
+F 0 "D502" H 4528 1546 50  0000 L CNN
 F 1 "INS-1" H 4528 1455 50  0000 L CNN
 F 2 "" H 4450 1500 50  0001 C CNN
 F 3 "" H 4450 1500 50  0001 C CNN
@@ -314,8 +314,8 @@ L Nixie_KiCAD_Library:INS-1 D?
 U 1 1 60A0A4D5
 P 4450 2600
 AR Path="/60A0A4D5" Ref="D?"  Part="1" 
-AR Path="/6091E188/60A0A4D5" Ref="D8"  Part="1" 
-F 0 "D8" H 4528 2646 50  0000 L CNN
+AR Path="/6091E188/60A0A4D5" Ref="D504"  Part="1" 
+F 0 "D504" H 4528 2646 50  0000 L CNN
 F 1 "INS-1" H 4528 2555 50  0000 L CNN
 F 2 "" H 4450 2600 50  0001 C CNN
 F 3 "" H 4450 2600 50  0001 C CNN
@@ -343,8 +343,8 @@ L Nixie_KiCAD_Library:INS-1 D?
 U 1 1 60A0A4E3
 P 9200 2250
 AR Path="/60A0A4E3" Ref="D?"  Part="1" 
-AR Path="/6091E188/60A0A4E3" Ref="D13"  Part="1" 
-F 0 "D13" V 9100 2200 50  0000 L CNN
+AR Path="/6091E188/60A0A4E3" Ref="D510"  Part="1" 
+F 0 "D510" V 9100 2200 50  0000 L CNN
 F 1 "INS-1" V 9300 2200 50  0000 L CNN
 F 2 "" H 9200 2250 50  0001 C CNN
 F 3 "" H 9200 2250 50  0001 C CNN
@@ -356,8 +356,8 @@ L Nixie_KiCAD_Library:INS-1 D?
 U 1 1 60A0A4E9
 P 7550 2250
 AR Path="/60A0A4E9" Ref="D?"  Part="1" 
-AR Path="/6091E188/60A0A4E9" Ref="D9"  Part="1" 
-F 0 "D9" V 7450 2200 50  0000 L CNN
+AR Path="/6091E188/60A0A4E9" Ref="D509"  Part="1" 
+F 0 "D509" V 7450 2200 50  0000 L CNN
 F 1 "INS-1" V 7650 2200 50  0000 L CNN
 F 2 "" H 7550 2250 50  0001 C CNN
 F 3 "" H 7550 2250 50  0001 C CNN
@@ -369,8 +369,8 @@ L Nixie_KiCAD_Library:INS-1 D?
 U 1 1 60A0A4EF
 P 7550 4750
 AR Path="/60A0A4EF" Ref="D?"  Part="1" 
-AR Path="/6091E188/60A0A4EF" Ref="D12"  Part="1" 
-F 0 "D12" V 7450 4700 50  0000 L CNN
+AR Path="/6091E188/60A0A4EF" Ref="D515"  Part="1" 
+F 0 "D515" V 7450 4700 50  0000 L CNN
 F 1 "INS-1" V 7650 4700 50  0000 L CNN
 F 2 "" H 7550 4750 50  0001 C CNN
 F 3 "" H 7550 4750 50  0001 C CNN
@@ -382,8 +382,8 @@ L Nixie_KiCAD_Library:INS-1 D?
 U 1 1 60A0A4F5
 P 7550 3950
 AR Path="/60A0A4F5" Ref="D?"  Part="1" 
-AR Path="/6091E188/60A0A4F5" Ref="D11"  Part="1" 
-F 0 "D11" V 7450 3900 50  0000 L CNN
+AR Path="/6091E188/60A0A4F5" Ref="D513"  Part="1" 
+F 0 "D513" V 7450 3900 50  0000 L CNN
 F 1 "INS-1" V 7650 3900 50  0000 L CNN
 F 2 "" H 7550 3950 50  0001 C CNN
 F 3 "" H 7550 3950 50  0001 C CNN
@@ -395,8 +395,8 @@ L Nixie_KiCAD_Library:INS-1 D?
 U 1 1 60A0A4FB
 P 9200 3050
 AR Path="/60A0A4FB" Ref="D?"  Part="1" 
-AR Path="/6091E188/60A0A4FB" Ref="D14"  Part="1" 
-F 0 "D14" V 9100 3000 50  0000 L CNN
+AR Path="/6091E188/60A0A4FB" Ref="D512"  Part="1" 
+F 0 "D512" V 9100 3000 50  0000 L CNN
 F 1 "INS-1" V 9300 3000 50  0000 L CNN
 F 2 "" H 9200 3050 50  0001 C CNN
 F 3 "" H 9200 3050 50  0001 C CNN
@@ -408,8 +408,8 @@ L Nixie_KiCAD_Library:INS-1 D?
 U 1 1 60A0A501
 P 7550 3050
 AR Path="/60A0A501" Ref="D?"  Part="1" 
-AR Path="/6091E188/60A0A501" Ref="D10"  Part="1" 
-F 0 "D10" V 7450 3000 50  0000 L CNN
+AR Path="/6091E188/60A0A501" Ref="D511"  Part="1" 
+F 0 "D511" V 7450 3000 50  0000 L CNN
 F 1 "INS-1" V 7650 3000 50  0000 L CNN
 F 2 "" H 7550 3050 50  0001 C CNN
 F 3 "" H 7550 3050 50  0001 C CNN
@@ -421,8 +421,8 @@ L Device:R_Small R?
 U 1 1 60A0A50D
 P 8550 2500
 AR Path="/60A0A50D" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A50D" Ref="R26"  Part="1" 
-F 0 "R26" V 8450 2450 50  0000 L CNN
+AR Path="/6091E188/60A0A50D" Ref="R512"  Part="1" 
+F 0 "R512" V 8450 2450 50  0000 L CNN
 F 1 "130k" V 8650 2400 50  0000 L CNN
 F 2 "" H 8550 2500 50  0001 C CNN
 F 3 "~" H 8550 2500 50  0001 C CNN
@@ -460,8 +460,8 @@ L Nixie_KiCAD_Library:INS-1 D?
 U 1 1 60A0A525
 P 9200 3950
 AR Path="/60A0A525" Ref="D?"  Part="1" 
-AR Path="/6091E188/60A0A525" Ref="D15"  Part="1" 
-F 0 "D15" V 9100 3900 50  0000 L CNN
+AR Path="/6091E188/60A0A525" Ref="D514"  Part="1" 
+F 0 "D514" V 9100 3900 50  0000 L CNN
 F 1 "INS-1" V 9300 3900 50  0000 L CNN
 F 2 "" H 9200 3950 50  0001 C CNN
 F 3 "" H 9200 3950 50  0001 C CNN
@@ -486,8 +486,8 @@ L Device:R_Small R?
 U 1 1 60A0A537
 P 8550 3300
 AR Path="/60A0A537" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A537" Ref="R27"  Part="1" 
-F 0 "R27" V 8450 3250 50  0000 L CNN
+AR Path="/6091E188/60A0A537" Ref="R516"  Part="1" 
+F 0 "R516" V 8450 3250 50  0000 L CNN
 F 1 "130k" V 8650 3200 50  0000 L CNN
 F 2 "" H 8550 3300 50  0001 C CNN
 F 3 "~" H 8550 3300 50  0001 C CNN
@@ -499,8 +499,8 @@ L Device:R_Small R?
 U 1 1 60A0A53D
 P 8550 4200
 AR Path="/60A0A53D" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A53D" Ref="R28"  Part="1" 
-F 0 "R28" V 8450 4150 50  0000 L CNN
+AR Path="/6091E188/60A0A53D" Ref="R520"  Part="1" 
+F 0 "R520" V 8450 4150 50  0000 L CNN
 F 1 "130k" V 8650 4100 50  0000 L CNN
 F 2 "" H 8550 4200 50  0001 C CNN
 F 3 "~" H 8550 4200 50  0001 C CNN
@@ -512,8 +512,8 @@ L Nixie_KiCAD_Library:INS-1 D?
 U 1 1 60A0A543
 P 9200 4750
 AR Path="/60A0A543" Ref="D?"  Part="1" 
-AR Path="/6091E188/60A0A543" Ref="D16"  Part="1" 
-F 0 "D16" V 9100 4700 50  0000 L CNN
+AR Path="/6091E188/60A0A543" Ref="D516"  Part="1" 
+F 0 "D516" V 9100 4700 50  0000 L CNN
 F 1 "INS-1" V 9300 4700 50  0000 L CNN
 F 2 "" H 9200 4750 50  0001 C CNN
 F 3 "" H 9200 4750 50  0001 C CNN
@@ -538,8 +538,8 @@ L Device:R_Small R?
 U 1 1 60A0A555
 P 8550 5000
 AR Path="/60A0A555" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A555" Ref="R29"  Part="1" 
-F 0 "R29" V 8450 4950 50  0000 L CNN
+AR Path="/6091E188/60A0A555" Ref="R524"  Part="1" 
+F 0 "R524" V 8450 4950 50  0000 L CNN
 F 1 "130k" V 8650 4900 50  0000 L CNN
 F 2 "" H 8550 5000 50  0001 C CNN
 F 3 "~" H 8550 5000 50  0001 C CNN
@@ -596,8 +596,8 @@ L Device:R_Small R?
 U 1 1 60A0A577
 P 6900 5000
 AR Path="/60A0A577" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A577" Ref="R21"  Part="1" 
-F 0 "R21" V 6800 4950 50  0000 L CNN
+AR Path="/6091E188/60A0A577" Ref="R522"  Part="1" 
+F 0 "R522" V 6800 4950 50  0000 L CNN
 F 1 "130k" V 7000 4900 50  0000 L CNN
 F 2 "" H 6900 5000 50  0001 C CNN
 F 3 "~" H 6900 5000 50  0001 C CNN
@@ -609,8 +609,8 @@ L Device:R_Small R?
 U 1 1 60A0A58F
 P 6900 4200
 AR Path="/60A0A58F" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A58F" Ref="R20"  Part="1" 
-F 0 "R20" V 6800 4150 50  0000 L CNN
+AR Path="/6091E188/60A0A58F" Ref="R518"  Part="1" 
+F 0 "R518" V 6800 4150 50  0000 L CNN
 F 1 "130k" V 7000 4100 50  0000 L CNN
 F 2 "" H 6900 4200 50  0001 C CNN
 F 3 "~" H 6900 4200 50  0001 C CNN
@@ -622,8 +622,8 @@ L Device:R_Small R?
 U 1 1 60A0A595
 P 6900 3300
 AR Path="/60A0A595" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A595" Ref="R19"  Part="1" 
-F 0 "R19" V 6800 3250 50  0000 L CNN
+AR Path="/6091E188/60A0A595" Ref="R514"  Part="1" 
+F 0 "R514" V 6800 3250 50  0000 L CNN
 F 1 "130k" V 7000 3200 50  0000 L CNN
 F 2 "" H 6900 3300 50  0001 C CNN
 F 3 "~" H 6900 3300 50  0001 C CNN
@@ -635,8 +635,8 @@ L Device:R_Small R?
 U 1 1 60A0A59B
 P 6900 2500
 AR Path="/60A0A59B" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A59B" Ref="R18"  Part="1" 
-F 0 "R18" V 6800 2450 50  0000 L CNN
+AR Path="/6091E188/60A0A59B" Ref="R510"  Part="1" 
+F 0 "R510" V 6800 2450 50  0000 L CNN
 F 1 "130k" V 7000 2400 50  0000 L CNN
 F 2 "" H 6900 2500 50  0001 C CNN
 F 3 "~" H 6900 2500 50  0001 C CNN
@@ -724,8 +724,8 @@ L Device:R_Small R?
 U 1 1 60A0A5C5
 P 9700 2250
 AR Path="/60A0A5C5" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A5C5" Ref="R30"  Part="1" 
-F 0 "R30" V 9600 2150 50  0000 L CNN
+AR Path="/6091E188/60A0A5C5" Ref="R513"  Part="1" 
+F 0 "R513" V 9600 2150 50  0000 L CNN
 F 1 "220k" V 9800 2150 50  0000 L CNN
 F 2 "" H 9700 2250 50  0001 C CNN
 F 3 "~" H 9700 2250 50  0001 C CNN
@@ -737,8 +737,8 @@ L Device:R_Small R?
 U 1 1 60A0A5CB
 P 9700 3050
 AR Path="/60A0A5CB" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A5CB" Ref="R31"  Part="1" 
-F 0 "R31" V 9600 2950 50  0000 L CNN
+AR Path="/6091E188/60A0A5CB" Ref="R517"  Part="1" 
+F 0 "R517" V 9600 2950 50  0000 L CNN
 F 1 "220k" V 9800 2950 50  0000 L CNN
 F 2 "" H 9700 3050 50  0001 C CNN
 F 3 "~" H 9700 3050 50  0001 C CNN
@@ -750,8 +750,8 @@ L Device:R_Small R?
 U 1 1 60A0A5D1
 P 9700 3950
 AR Path="/60A0A5D1" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A5D1" Ref="R32"  Part="1" 
-F 0 "R32" V 9600 3850 50  0000 L CNN
+AR Path="/6091E188/60A0A5D1" Ref="R521"  Part="1" 
+F 0 "R521" V 9600 3850 50  0000 L CNN
 F 1 "220k" V 9800 3850 50  0000 L CNN
 F 2 "" H 9700 3950 50  0001 C CNN
 F 3 "~" H 9700 3950 50  0001 C CNN
@@ -763,8 +763,8 @@ L Device:R_Small R?
 U 1 1 60A0A5D7
 P 9700 4750
 AR Path="/60A0A5D7" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A5D7" Ref="R33"  Part="1" 
-F 0 "R33" V 9600 4650 50  0000 L CNN
+AR Path="/6091E188/60A0A5D7" Ref="R525"  Part="1" 
+F 0 "R525" V 9600 4650 50  0000 L CNN
 F 1 "220k" V 9800 4650 50  0000 L CNN
 F 2 "" H 9700 4750 50  0001 C CNN
 F 3 "~" H 9700 4750 50  0001 C CNN
@@ -803,8 +803,8 @@ L Device:R_Small R?
 U 1 1 60A0A5EC
 P 7900 2250
 AR Path="/60A0A5EC" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A5EC" Ref="R22"  Part="1" 
-F 0 "R22" V 7800 2150 50  0000 L CNN
+AR Path="/6091E188/60A0A5EC" Ref="R511"  Part="1" 
+F 0 "R511" V 7800 2150 50  0000 L CNN
 F 1 "220k" V 8000 2150 50  0000 L CNN
 F 2 "" H 7900 2250 50  0001 C CNN
 F 3 "~" H 7900 2250 50  0001 C CNN
@@ -816,8 +816,8 @@ L Device:R_Small R?
 U 1 1 60A0A5F2
 P 7900 3050
 AR Path="/60A0A5F2" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A5F2" Ref="R23"  Part="1" 
-F 0 "R23" V 7800 2950 50  0000 L CNN
+AR Path="/6091E188/60A0A5F2" Ref="R515"  Part="1" 
+F 0 "R515" V 7800 2950 50  0000 L CNN
 F 1 "220k" V 8000 2950 50  0000 L CNN
 F 2 "" H 7900 3050 50  0001 C CNN
 F 3 "~" H 7900 3050 50  0001 C CNN
@@ -829,8 +829,8 @@ L Device:R_Small R?
 U 1 1 60A0A5F8
 P 7900 3950
 AR Path="/60A0A5F8" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A5F8" Ref="R24"  Part="1" 
-F 0 "R24" V 7800 3850 50  0000 L CNN
+AR Path="/6091E188/60A0A5F8" Ref="R519"  Part="1" 
+F 0 "R519" V 7800 3850 50  0000 L CNN
 F 1 "220k" V 8000 3850 50  0000 L CNN
 F 2 "" H 7900 3950 50  0001 C CNN
 F 3 "~" H 7900 3950 50  0001 C CNN
@@ -842,8 +842,8 @@ L Device:R_Small R?
 U 1 1 60A0A5FE
 P 7900 4750
 AR Path="/60A0A5FE" Ref="R?"  Part="1" 
-AR Path="/6091E188/60A0A5FE" Ref="R25"  Part="1" 
-F 0 "R25" V 7800 4650 50  0000 L CNN
+AR Path="/6091E188/60A0A5FE" Ref="R523"  Part="1" 
+F 0 "R523" V 7800 4650 50  0000 L CNN
 F 1 "220k" V 8000 4650 50  0000 L CNN
 F 2 "" H 7900 4750 50  0001 C CNN
 F 3 "~" H 7900 4750 50  0001 C CNN
@@ -1190,10 +1190,10 @@ Connection ~ 9000 2250
 Wire Wire Line
 	7350 4450 7350 4400
 $Comp
-L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q1
+L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q501
 U 1 1 60A80B85
 P 2800 3200
-F 0 "Q1" H 2988 3253 60  0000 L CNN
+F 0 "Q501" H 2988 3253 60  0000 L CNN
 F 1 "ZTX457" H 2988 3147 60  0000 L CNN
 F 2 "digikey-footprints:TO-92-3" H 3000 3400 60  0001 L CNN
 F 3 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 3000 3500 60  0001 L CNN
@@ -1210,170 +1210,10 @@ F 12 "Active" H 3000 4400 60  0001 L CNN "Status"
 	1    0    0    -1  
 $EndComp
 $Comp
-L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q10
-U 1 1 60ABC982
-P 8900 2500
-F 0 "Q10" H 9088 2553 60  0000 L CNN
-F 1 "ZTX457" H 9088 2447 60  0000 L CNN
-F 2 "digikey-footprints:TO-92-3" H 9100 2700 60  0001 L CNN
-F 3 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 9100 2800 60  0001 L CNN
-F 4 "ZTX450-ND" H 9100 2900 60  0001 L CNN "Digi-Key_PN"
-F 5 "ZTX450" H 9100 3000 60  0001 L CNN "MPN"
-F 6 "Discrete Semiconductor Products" H 9100 3100 60  0001 L CNN "Category"
-F 7 "Transistors - Bipolar (BJT) - Single" H 9100 3200 60  0001 L CNN "Family"
-F 8 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 9100 3300 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/diodes-incorporated/ZTX450/ZTX450-ND/92530" H 9100 3400 60  0001 L CNN "DK_Detail_Page"
-F 10 "TRANS NPN 45V 1A E-LINE" H 9100 3500 60  0001 L CNN "Description"
-F 11 "Diodes Incorporated" H 9100 3600 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 9100 3700 60  0001 L CNN "Status"
-	1    8900 2500
-	1    0    0    -1  
-$EndComp
-$Comp
-L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q11
-U 1 1 60ABDC93
-P 8900 3300
-F 0 "Q11" H 9088 3353 60  0000 L CNN
-F 1 "ZTX457" H 9088 3247 60  0000 L CNN
-F 2 "digikey-footprints:TO-92-3" H 9100 3500 60  0001 L CNN
-F 3 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 9100 3600 60  0001 L CNN
-F 4 "ZTX450-ND" H 9100 3700 60  0001 L CNN "Digi-Key_PN"
-F 5 "ZTX450" H 9100 3800 60  0001 L CNN "MPN"
-F 6 "Discrete Semiconductor Products" H 9100 3900 60  0001 L CNN "Category"
-F 7 "Transistors - Bipolar (BJT) - Single" H 9100 4000 60  0001 L CNN "Family"
-F 8 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 9100 4100 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/diodes-incorporated/ZTX450/ZTX450-ND/92530" H 9100 4200 60  0001 L CNN "DK_Detail_Page"
-F 10 "TRANS NPN 45V 1A E-LINE" H 9100 4300 60  0001 L CNN "Description"
-F 11 "Diodes Incorporated" H 9100 4400 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 9100 4500 60  0001 L CNN "Status"
-	1    8900 3300
-	1    0    0    -1  
-$EndComp
-$Comp
-L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q12
-U 1 1 60ABE38C
-P 8900 4200
-F 0 "Q12" H 9088 4253 60  0000 L CNN
-F 1 "ZTX457" H 9088 4147 60  0000 L CNN
-F 2 "digikey-footprints:TO-92-3" H 9100 4400 60  0001 L CNN
-F 3 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 9100 4500 60  0001 L CNN
-F 4 "ZTX450-ND" H 9100 4600 60  0001 L CNN "Digi-Key_PN"
-F 5 "ZTX450" H 9100 4700 60  0001 L CNN "MPN"
-F 6 "Discrete Semiconductor Products" H 9100 4800 60  0001 L CNN "Category"
-F 7 "Transistors - Bipolar (BJT) - Single" H 9100 4900 60  0001 L CNN "Family"
-F 8 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 9100 5000 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/diodes-incorporated/ZTX450/ZTX450-ND/92530" H 9100 5100 60  0001 L CNN "DK_Detail_Page"
-F 10 "TRANS NPN 45V 1A E-LINE" H 9100 5200 60  0001 L CNN "Description"
-F 11 "Diodes Incorporated" H 9100 5300 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 9100 5400 60  0001 L CNN "Status"
-	1    8900 4200
-	1    0    0    -1  
-$EndComp
-$Comp
-L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q13
-U 1 1 60ABEC9D
-P 8900 5000
-F 0 "Q13" H 9088 5053 60  0000 L CNN
-F 1 "ZTX457" H 9088 4947 60  0000 L CNN
-F 2 "digikey-footprints:TO-92-3" H 9100 5200 60  0001 L CNN
-F 3 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 9100 5300 60  0001 L CNN
-F 4 "ZTX450-ND" H 9100 5400 60  0001 L CNN "Digi-Key_PN"
-F 5 "ZTX450" H 9100 5500 60  0001 L CNN "MPN"
-F 6 "Discrete Semiconductor Products" H 9100 5600 60  0001 L CNN "Category"
-F 7 "Transistors - Bipolar (BJT) - Single" H 9100 5700 60  0001 L CNN "Family"
-F 8 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 9100 5800 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/diodes-incorporated/ZTX450/ZTX450-ND/92530" H 9100 5900 60  0001 L CNN "DK_Detail_Page"
-F 10 "TRANS NPN 45V 1A E-LINE" H 9100 6000 60  0001 L CNN "Description"
-F 11 "Diodes Incorporated" H 9100 6100 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 9100 6200 60  0001 L CNN "Status"
-	1    8900 5000
-	1    0    0    -1  
-$EndComp
-$Comp
-L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q9
-U 1 1 60ABF3F2
-P 7250 5000
-F 0 "Q9" H 7438 5053 60  0000 L CNN
-F 1 "ZTX457" H 7438 4947 60  0000 L CNN
-F 2 "digikey-footprints:TO-92-3" H 7450 5200 60  0001 L CNN
-F 3 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 7450 5300 60  0001 L CNN
-F 4 "ZTX450-ND" H 7450 5400 60  0001 L CNN "Digi-Key_PN"
-F 5 "ZTX450" H 7450 5500 60  0001 L CNN "MPN"
-F 6 "Discrete Semiconductor Products" H 7450 5600 60  0001 L CNN "Category"
-F 7 "Transistors - Bipolar (BJT) - Single" H 7450 5700 60  0001 L CNN "Family"
-F 8 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 7450 5800 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/diodes-incorporated/ZTX450/ZTX450-ND/92530" H 7450 5900 60  0001 L CNN "DK_Detail_Page"
-F 10 "TRANS NPN 45V 1A E-LINE" H 7450 6000 60  0001 L CNN "Description"
-F 11 "Diodes Incorporated" H 7450 6100 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 7450 6200 60  0001 L CNN "Status"
-	1    7250 5000
-	1    0    0    -1  
-$EndComp
-$Comp
-L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q8
-U 1 1 60ABFAC3
-P 7250 4200
-F 0 "Q8" H 7438 4253 60  0000 L CNN
-F 1 "ZTX457" H 7438 4147 60  0000 L CNN
-F 2 "digikey-footprints:TO-92-3" H 7450 4400 60  0001 L CNN
-F 3 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 7450 4500 60  0001 L CNN
-F 4 "ZTX450-ND" H 7450 4600 60  0001 L CNN "Digi-Key_PN"
-F 5 "ZTX450" H 7450 4700 60  0001 L CNN "MPN"
-F 6 "Discrete Semiconductor Products" H 7450 4800 60  0001 L CNN "Category"
-F 7 "Transistors - Bipolar (BJT) - Single" H 7450 4900 60  0001 L CNN "Family"
-F 8 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 7450 5000 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/diodes-incorporated/ZTX450/ZTX450-ND/92530" H 7450 5100 60  0001 L CNN "DK_Detail_Page"
-F 10 "TRANS NPN 45V 1A E-LINE" H 7450 5200 60  0001 L CNN "Description"
-F 11 "Diodes Incorporated" H 7450 5300 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 7450 5400 60  0001 L CNN "Status"
-	1    7250 4200
-	1    0    0    -1  
-$EndComp
-$Comp
-L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q7
-U 1 1 60AC02E2
-P 7250 3300
-F 0 "Q7" H 7438 3353 60  0000 L CNN
-F 1 "ZTX457" H 7438 3247 60  0000 L CNN
-F 2 "digikey-footprints:TO-92-3" H 7450 3500 60  0001 L CNN
-F 3 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 7450 3600 60  0001 L CNN
-F 4 "ZTX450-ND" H 7450 3700 60  0001 L CNN "Digi-Key_PN"
-F 5 "ZTX450" H 7450 3800 60  0001 L CNN "MPN"
-F 6 "Discrete Semiconductor Products" H 7450 3900 60  0001 L CNN "Category"
-F 7 "Transistors - Bipolar (BJT) - Single" H 7450 4000 60  0001 L CNN "Family"
-F 8 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 7450 4100 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/diodes-incorporated/ZTX450/ZTX450-ND/92530" H 7450 4200 60  0001 L CNN "DK_Detail_Page"
-F 10 "TRANS NPN 45V 1A E-LINE" H 7450 4300 60  0001 L CNN "Description"
-F 11 "Diodes Incorporated" H 7450 4400 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 7450 4500 60  0001 L CNN "Status"
-	1    7250 3300
-	1    0    0    -1  
-$EndComp
-$Comp
-L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q6
-U 1 1 60AC0B1B
-P 7250 2500
-F 0 "Q6" H 7438 2553 60  0000 L CNN
-F 1 "ZTX457" H 7438 2447 60  0000 L CNN
-F 2 "digikey-footprints:TO-92-3" H 7450 2700 60  0001 L CNN
-F 3 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 7450 2800 60  0001 L CNN
-F 4 "ZTX450-ND" H 7450 2900 60  0001 L CNN "Digi-Key_PN"
-F 5 "ZTX450" H 7450 3000 60  0001 L CNN "MPN"
-F 6 "Discrete Semiconductor Products" H 7450 3100 60  0001 L CNN "Category"
-F 7 "Transistors - Bipolar (BJT) - Single" H 7450 3200 60  0001 L CNN "Family"
-F 8 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 7450 3300 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/diodes-incorporated/ZTX450/ZTX450-ND/92530" H 7450 3400 60  0001 L CNN "DK_Detail_Page"
-F 10 "TRANS NPN 45V 1A E-LINE" H 7450 3500 60  0001 L CNN "Description"
-F 11 "Diodes Incorporated" H 7450 3600 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 7450 3700 60  0001 L CNN "Status"
-	1    7250 2500
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:LED D3
+L Device:LED D505
 U 1 1 60AC353B
 P 3900 4300
-F 0 "D3" H 3900 4200 50  0000 C CNN
+F 0 "D505" H 3900 4200 50  0000 C CNN
 F 1 "White" H 3850 4400 50  0000 C CNN
 F 2 "" H 3900 4300 50  0001 C CNN
 F 3 "~" H 3900 4300 50  0001 C CNN
@@ -1381,10 +1221,10 @@ F 3 "~" H 3900 4300 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Device:LED D4
+L Device:LED D506
 U 1 1 60AC49CB
 P 3900 5200
-F 0 "D4" H 3900 5100 50  0000 C CNN
+F 0 "D506" H 3900 5100 50  0000 C CNN
 F 1 "White" H 3850 5300 50  0000 C CNN
 F 2 "" H 3900 5200 50  0001 C CNN
 F 3 "~" H 3900 5200 50  0001 C CNN
@@ -1392,10 +1232,10 @@ F 3 "~" H 3900 5200 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Device:LED D5
+L Device:LED D507
 U 1 1 60AC4DE8
 P 3900 6050
-F 0 "D5" H 3900 5950 50  0000 C CNN
+F 0 "D507" H 3900 5950 50  0000 C CNN
 F 1 "White" H 3850 6150 50  0000 C CNN
 F 2 "" H 3900 6050 50  0001 C CNN
 F 3 "~" H 3900 6050 50  0001 C CNN
@@ -1403,10 +1243,10 @@ F 3 "~" H 3900 6050 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Device:LED D6
+L Device:LED D508
 U 1 1 60AC51CE
 P 3900 6900
-F 0 "D6" H 3900 6800 50  0000 C CNN
+F 0 "D508" H 3900 6800 50  0000 C CNN
 F 1 "White" H 3850 7000 50  0000 C CNN
 F 2 "" H 3900 6900 50  0001 C CNN
 F 3 "~" H 3900 6900 50  0001 C CNN
@@ -1418,8 +1258,8 @@ L Device:R_Small R?
 U 1 1 60AC5478
 P 2450 4550
 AR Path="/60AC5478" Ref="R?"  Part="1" 
-AR Path="/6091E188/60AC5478" Ref="R10"  Part="1" 
-F 0 "R10" V 2350 4500 50  0000 L CNN
+AR Path="/6091E188/60AC5478" Ref="R506"  Part="1" 
+F 0 "R506" V 2350 4500 50  0000 L CNN
 F 1 "270" V 2550 4450 50  0000 L CNN
 F 2 "" H 2450 4550 50  0001 C CNN
 F 3 "~" H 2450 4550 50  0001 C CNN
@@ -1431,8 +1271,8 @@ L Device:R_Small R?
 U 1 1 60AC57B7
 P 2450 5450
 AR Path="/60AC57B7" Ref="R?"  Part="1" 
-AR Path="/6091E188/60AC57B7" Ref="R11"  Part="1" 
-F 0 "R11" V 2350 5400 50  0000 L CNN
+AR Path="/6091E188/60AC57B7" Ref="R507"  Part="1" 
+F 0 "R507" V 2350 5400 50  0000 L CNN
 F 1 "270" V 2550 5350 50  0000 L CNN
 F 2 "" H 2450 5450 50  0001 C CNN
 F 3 "~" H 2450 5450 50  0001 C CNN
@@ -1444,8 +1284,8 @@ L Device:R_Small R?
 U 1 1 60AC5A14
 P 2450 6300
 AR Path="/60AC5A14" Ref="R?"  Part="1" 
-AR Path="/6091E188/60AC5A14" Ref="R12"  Part="1" 
-F 0 "R12" V 2350 6250 50  0000 L CNN
+AR Path="/6091E188/60AC5A14" Ref="R508"  Part="1" 
+F 0 "R508" V 2350 6250 50  0000 L CNN
 F 1 "270" V 2550 6200 50  0000 L CNN
 F 2 "" H 2450 6300 50  0001 C CNN
 F 3 "~" H 2450 6300 50  0001 C CNN
@@ -1457,8 +1297,8 @@ L Device:R_Small R?
 U 1 1 60AC5D09
 P 2450 7150
 AR Path="/60AC5D09" Ref="R?"  Part="1" 
-AR Path="/6091E188/60AC5D09" Ref="R13"  Part="1" 
-F 0 "R13" V 2350 7100 50  0000 L CNN
+AR Path="/6091E188/60AC5D09" Ref="R509"  Part="1" 
+F 0 "R509" V 2350 7100 50  0000 L CNN
 F 1 "270" V 2550 7050 50  0000 L CNN
 F 2 "" H 2450 7150 50  0001 C CNN
 F 3 "~" H 2450 7150 50  0001 C CNN
@@ -1476,10 +1316,10 @@ Wire Wire Line
 Wire Wire Line
 	4050 5200 4500 5200
 $Comp
-L Transistor_BJT:2N3904 Q2
+L Transistor_BJT:2N3904 Q502
 U 1 1 60AE213C
 P 2850 4550
-F 0 "Q2" H 3040 4596 50  0000 L CNN
+F 0 "Q502" H 3040 4596 50  0000 L CNN
 F 1 "2N3904" H 3040 4505 50  0000 L CNN
 F 2 "Package_TO_SOT_THT:TO-92_Inline" H 3050 4475 50  0001 L CIN
 F 3 "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" H 2850 4550 50  0001 L CNN
@@ -1487,10 +1327,10 @@ F 3 "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" H 2850 4550 50  0001 L 
 	1    0    0    -1  
 $EndComp
 $Comp
-L Transistor_BJT:2N3904 Q3
+L Transistor_BJT:2N3904 Q503
 U 1 1 60B035D8
 P 2850 5450
-F 0 "Q3" H 3040 5496 50  0000 L CNN
+F 0 "Q503" H 3040 5496 50  0000 L CNN
 F 1 "2N3904" H 3040 5405 50  0000 L CNN
 F 2 "Package_TO_SOT_THT:TO-92_Inline" H 3050 5375 50  0001 L CIN
 F 3 "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" H 2850 5450 50  0001 L CNN
@@ -1498,10 +1338,10 @@ F 3 "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" H 2850 5450 50  0001 L 
 	1    0    0    -1  
 $EndComp
 $Comp
-L Transistor_BJT:2N3904 Q4
+L Transistor_BJT:2N3904 Q504
 U 1 1 60B03AA2
 P 2850 6300
-F 0 "Q4" H 3040 6346 50  0000 L CNN
+F 0 "Q504" H 3040 6346 50  0000 L CNN
 F 1 "2N3904" H 3040 6255 50  0000 L CNN
 F 2 "Package_TO_SOT_THT:TO-92_Inline" H 3050 6225 50  0001 L CIN
 F 3 "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" H 2850 6300 50  0001 L CNN
@@ -1509,10 +1349,10 @@ F 3 "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" H 2850 6300 50  0001 L 
 	1    0    0    -1  
 $EndComp
 $Comp
-L Transistor_BJT:2N3904 Q5
+L Transistor_BJT:2N3904 Q505
 U 1 1 60B0974D
 P 2850 7150
-F 0 "Q5" H 3040 7196 50  0000 L CNN
+F 0 "Q505" H 3040 7196 50  0000 L CNN
 F 1 "2N3904" H 3040 7105 50  0000 L CNN
 F 2 "Package_TO_SOT_THT:TO-92_Inline" H 3050 7075 50  0001 L CIN
 F 3 "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" H 2850 7150 50  0001 L CNN
@@ -1681,4 +1521,164 @@ Wire Wire Line
 Connection ~ 4450 2100
 Wire Wire Line
 	4450 2100 4450 2150
+$Comp
+L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q512
+U 1 1 60883A8F
+P 7250 5000
+F 0 "Q512" H 7438 5053 60  0000 L CNN
+F 1 "ZTX450" H 7438 4947 60  0000 L CNN
+F 2 "digikey-footprints:TO-92-3" H 7450 5200 60  0001 L CNN
+F 3 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 7450 5300 60  0001 L CNN
+F 4 "ZTX450-ND" H 7450 5400 60  0001 L CNN "Digi-Key_PN"
+F 5 "ZTX450" H 7450 5500 60  0001 L CNN "MPN"
+F 6 "Discrete Semiconductor Products" H 7450 5600 60  0001 L CNN "Category"
+F 7 "Transistors - Bipolar (BJT) - Single" H 7450 5700 60  0001 L CNN "Family"
+F 8 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 7450 5800 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/diodes-incorporated/ZTX450/ZTX450-ND/92530" H 7450 5900 60  0001 L CNN "DK_Detail_Page"
+F 10 "TRANS NPN 45V 1A E-LINE" H 7450 6000 60  0001 L CNN "Description"
+F 11 "Diodes Incorporated" H 7450 6100 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 7450 6200 60  0001 L CNN "Status"
+	1    7250 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q510
+U 1 1 60884836
+P 7250 4200
+F 0 "Q510" H 7438 4253 60  0000 L CNN
+F 1 "ZTX450" H 7438 4147 60  0000 L CNN
+F 2 "digikey-footprints:TO-92-3" H 7450 4400 60  0001 L CNN
+F 3 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 7450 4500 60  0001 L CNN
+F 4 "ZTX450-ND" H 7450 4600 60  0001 L CNN "Digi-Key_PN"
+F 5 "ZTX450" H 7450 4700 60  0001 L CNN "MPN"
+F 6 "Discrete Semiconductor Products" H 7450 4800 60  0001 L CNN "Category"
+F 7 "Transistors - Bipolar (BJT) - Single" H 7450 4900 60  0001 L CNN "Family"
+F 8 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 7450 5000 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/diodes-incorporated/ZTX450/ZTX450-ND/92530" H 7450 5100 60  0001 L CNN "DK_Detail_Page"
+F 10 "TRANS NPN 45V 1A E-LINE" H 7450 5200 60  0001 L CNN "Description"
+F 11 "Diodes Incorporated" H 7450 5300 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 7450 5400 60  0001 L CNN "Status"
+	1    7250 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q508
+U 1 1 60885011
+P 7250 3300
+F 0 "Q508" H 7438 3353 60  0000 L CNN
+F 1 "ZTX450" H 7438 3247 60  0000 L CNN
+F 2 "digikey-footprints:TO-92-3" H 7450 3500 60  0001 L CNN
+F 3 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 7450 3600 60  0001 L CNN
+F 4 "ZTX450-ND" H 7450 3700 60  0001 L CNN "Digi-Key_PN"
+F 5 "ZTX450" H 7450 3800 60  0001 L CNN "MPN"
+F 6 "Discrete Semiconductor Products" H 7450 3900 60  0001 L CNN "Category"
+F 7 "Transistors - Bipolar (BJT) - Single" H 7450 4000 60  0001 L CNN "Family"
+F 8 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 7450 4100 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/diodes-incorporated/ZTX450/ZTX450-ND/92530" H 7450 4200 60  0001 L CNN "DK_Detail_Page"
+F 10 "TRANS NPN 45V 1A E-LINE" H 7450 4300 60  0001 L CNN "Description"
+F 11 "Diodes Incorporated" H 7450 4400 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 7450 4500 60  0001 L CNN "Status"
+	1    7250 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q506
+U 1 1 6088574A
+P 7250 2500
+F 0 "Q506" H 7438 2553 60  0000 L CNN
+F 1 "ZTX450" H 7438 2447 60  0000 L CNN
+F 2 "digikey-footprints:TO-92-3" H 7450 2700 60  0001 L CNN
+F 3 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 7450 2800 60  0001 L CNN
+F 4 "ZTX450-ND" H 7450 2900 60  0001 L CNN "Digi-Key_PN"
+F 5 "ZTX450" H 7450 3000 60  0001 L CNN "MPN"
+F 6 "Discrete Semiconductor Products" H 7450 3100 60  0001 L CNN "Category"
+F 7 "Transistors - Bipolar (BJT) - Single" H 7450 3200 60  0001 L CNN "Family"
+F 8 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 7450 3300 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/diodes-incorporated/ZTX450/ZTX450-ND/92530" H 7450 3400 60  0001 L CNN "DK_Detail_Page"
+F 10 "TRANS NPN 45V 1A E-LINE" H 7450 3500 60  0001 L CNN "Description"
+F 11 "Diodes Incorporated" H 7450 3600 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 7450 3700 60  0001 L CNN "Status"
+	1    7250 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q507
+U 1 1 60885E1F
+P 8900 2500
+F 0 "Q507" H 9088 2553 60  0000 L CNN
+F 1 "ZTX450" H 9088 2447 60  0000 L CNN
+F 2 "digikey-footprints:TO-92-3" H 9100 2700 60  0001 L CNN
+F 3 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 9100 2800 60  0001 L CNN
+F 4 "ZTX450-ND" H 9100 2900 60  0001 L CNN "Digi-Key_PN"
+F 5 "ZTX450" H 9100 3000 60  0001 L CNN "MPN"
+F 6 "Discrete Semiconductor Products" H 9100 3100 60  0001 L CNN "Category"
+F 7 "Transistors - Bipolar (BJT) - Single" H 9100 3200 60  0001 L CNN "Family"
+F 8 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 9100 3300 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/diodes-incorporated/ZTX450/ZTX450-ND/92530" H 9100 3400 60  0001 L CNN "DK_Detail_Page"
+F 10 "TRANS NPN 45V 1A E-LINE" H 9100 3500 60  0001 L CNN "Description"
+F 11 "Diodes Incorporated" H 9100 3600 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 9100 3700 60  0001 L CNN "Status"
+	1    8900 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q509
+U 1 1 60886480
+P 8900 3300
+F 0 "Q509" H 9088 3353 60  0000 L CNN
+F 1 "ZTX450" H 9088 3247 60  0000 L CNN
+F 2 "digikey-footprints:TO-92-3" H 9100 3500 60  0001 L CNN
+F 3 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 9100 3600 60  0001 L CNN
+F 4 "ZTX450-ND" H 9100 3700 60  0001 L CNN "Digi-Key_PN"
+F 5 "ZTX450" H 9100 3800 60  0001 L CNN "MPN"
+F 6 "Discrete Semiconductor Products" H 9100 3900 60  0001 L CNN "Category"
+F 7 "Transistors - Bipolar (BJT) - Single" H 9100 4000 60  0001 L CNN "Family"
+F 8 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 9100 4100 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/diodes-incorporated/ZTX450/ZTX450-ND/92530" H 9100 4200 60  0001 L CNN "DK_Detail_Page"
+F 10 "TRANS NPN 45V 1A E-LINE" H 9100 4300 60  0001 L CNN "Description"
+F 11 "Diodes Incorporated" H 9100 4400 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 9100 4500 60  0001 L CNN "Status"
+	1    8900 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q511
+U 1 1 60886B43
+P 8900 4200
+F 0 "Q511" H 9088 4253 60  0000 L CNN
+F 1 "ZTX450" H 9088 4147 60  0000 L CNN
+F 2 "digikey-footprints:TO-92-3" H 9100 4400 60  0001 L CNN
+F 3 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 9100 4500 60  0001 L CNN
+F 4 "ZTX450-ND" H 9100 4600 60  0001 L CNN "Digi-Key_PN"
+F 5 "ZTX450" H 9100 4700 60  0001 L CNN "MPN"
+F 6 "Discrete Semiconductor Products" H 9100 4800 60  0001 L CNN "Category"
+F 7 "Transistors - Bipolar (BJT) - Single" H 9100 4900 60  0001 L CNN "Family"
+F 8 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 9100 5000 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/diodes-incorporated/ZTX450/ZTX450-ND/92530" H 9100 5100 60  0001 L CNN "DK_Detail_Page"
+F 10 "TRANS NPN 45V 1A E-LINE" H 9100 5200 60  0001 L CNN "Description"
+F 11 "Diodes Incorporated" H 9100 5300 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 9100 5400 60  0001 L CNN "Status"
+	1    8900 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L dk_Transistors-Bipolar-BJT-Single:ZTX450 Q513
+U 1 1 6088748E
+P 8900 5000
+F 0 "Q513" H 9088 5053 60  0000 L CNN
+F 1 "ZTX450" H 9088 4947 60  0000 L CNN
+F 2 "digikey-footprints:TO-92-3" H 9100 5200 60  0001 L CNN
+F 3 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 9100 5300 60  0001 L CNN
+F 4 "ZTX450-ND" H 9100 5400 60  0001 L CNN "Digi-Key_PN"
+F 5 "ZTX450" H 9100 5500 60  0001 L CNN "MPN"
+F 6 "Discrete Semiconductor Products" H 9100 5600 60  0001 L CNN "Category"
+F 7 "Transistors - Bipolar (BJT) - Single" H 9100 5700 60  0001 L CNN "Family"
+F 8 "https://www.diodes.com/assets/Datasheets/ZTX450.pdf" H 9100 5800 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/diodes-incorporated/ZTX450/ZTX450-ND/92530" H 9100 5900 60  0001 L CNN "DK_Detail_Page"
+F 10 "TRANS NPN 45V 1A E-LINE" H 9100 6000 60  0001 L CNN "Description"
+F 11 "Diodes Incorporated" H 9100 6100 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 9100 6200 60  0001 L CNN "Status"
+	1    8900 5000
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
