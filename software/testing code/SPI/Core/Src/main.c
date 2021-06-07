@@ -48,11 +48,6 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
-uint8_t EXIXE_ZERO = 0b10101010 ;
-uint8_t EXIXE_MEDIUM = 0b10011100;
-uint8_t EXIXE_BRIGHT = 0b11111111;
-uint8_t EXIXE_DIM = 0b10000000;
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -61,7 +56,10 @@ static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_SPI1_Init(void);
 /* USER CODE BEGIN PFP */
-
+void Set_Digit(uint8_t, uint8_t);
+void Set_Led(uint8_t, uint8_t, uint8_t);
+void Set_Dots(uint8_t, uint8_t);
+void Set_None();
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -109,260 +107,54 @@ int main(void)
   uart_buf_len = sprintf(uart_buf, "SPI TEST\r\n");
   HAL_UART_Transmit(&huart2, (uint8_t *)uart_buf, uart_buf_len, 100);
 
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
-  HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_ZERO, 1, 100);
-  HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-  HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-  HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-  HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-  HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-  HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-  HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-  HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-  HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-  HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-  HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-  HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-  HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-  HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-  HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-  	//none
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_ZERO, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_MEDIUM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-		HAL_Delay(1000);
+  	Set_Digit(1, 127);
+  	Set_Led(127,0,0);
+  	HAL_Delay(1000);
 
-  	//0
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_ZERO, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_BRIGHT, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_MEDIUM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-		HAL_Delay(1000);
+  	Set_Digit(2, 127);
+  	HAL_Delay(1000);
 
-  	//1
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_ZERO, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_BRIGHT, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_MEDIUM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-		HAL_Delay(1000);
+  	Set_Digit(3, 127);
+  	HAL_Delay(1000);
 
-  	//2
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_ZERO, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_BRIGHT, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_MEDIUM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-		HAL_Delay(1000);
+  	Set_Digit(4, 127);
+  	HAL_Delay(1000);
 
-  	//3
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_ZERO, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_BRIGHT, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_MEDIUM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-		HAL_Delay(1000);
+  	Set_Digit(5, 127);
+  	HAL_Delay(1000);
 
-  	//4
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_ZERO, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_BRIGHT, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_MEDIUM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-		HAL_Delay(1000);
+  	Set_Digit(6, 127);
+  	HAL_Delay(1000);
 
-  	//5
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_ZERO, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_BRIGHT, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_MEDIUM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-		HAL_Delay(1000);
+  	Set_Digit(7, 127);
+  	HAL_Delay(1000);
 
-  	//6
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_ZERO, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_BRIGHT, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_MEDIUM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-		HAL_Delay(1000);
+  	Set_Digit(8, 127);
+  	HAL_Delay(1000);
 
-  	//7
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_ZERO, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_BRIGHT, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_MEDIUM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-		HAL_Delay(1000);
+  	Set_Digit(9, 127);
+  	HAL_Delay(1000);
 
-  	//8
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_ZERO, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_BRIGHT, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_MEDIUM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-		HAL_Delay(1000);
+  	Set_Digit(0, 127);
+  	HAL_Delay(1000);
 
-  	//9
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_ZERO, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_BRIGHT, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_MEDIUM, 1, 100);
-		HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIM, 1, 100);
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
-		HAL_Delay(1000);
+  	Set_None();
+
+  	Set_Dots(0, 127);
+  	HAL_Delay(1000);
+
+  	Set_Dots(127, 0);
+  	HAL_Delay(1000);
+
+  	Set_None();
+  	HAL_Delay(1000);
+
 
 
     /* USER CODE END WHILE */
@@ -521,7 +313,45 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void Set_Digit(uint8_t digit, uint8_t brightness)
+{
+	uint8_t EXIXE_DIGIT[16] = {0b10101010, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000};
+	if(digit != 0)
+	{
+		EXIXE_DIGIT[digit] = brightness + 0b10000000;
+	}
+	else if(digit == 0)
+	{
+		EXIXE_DIGIT[10] = brightness + 0b10000000;
+	}
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
+	HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIGIT, 16, 100);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+}
 
+void Set_None()
+{
+	uint8_t EXIXE_NONE[16] = {0b10101010, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000};
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
+	HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_NONE, 16, 100);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+}
+
+void Set_Led(uint8_t red, uint8_t green, uint8_t blue)
+{
+	uint8_t EXIXE_LED[16] = {0b10101010, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, red + 0b10000000, green + 0b10000000, blue + 0b10000000};
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
+	HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_LED, 16, 100);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+}
+
+void Set_Dots(uint8_t left_brightness, uint8_t right_brightness)
+{
+	uint8_t EXIXE_DOTS[16] = {0b10101010, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, left_brightness + 0b10000000, right_brightness + 0b10000000, 0b00000000, 0b00000000, 0b00000000};
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
+	HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DOTS, 16, 100);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+}
 /* USER CODE END 4 */
 
 /**
