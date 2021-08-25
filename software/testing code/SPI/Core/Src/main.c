@@ -43,8 +43,8 @@
 
 /* Private variables ---------------------------------------------------------*/
 SPI_HandleTypeDef hspi1;
+
 UART_HandleTypeDef huart2;
-void(*state)(); // This is a function pointer
 
 /* USER CODE BEGIN PV */
 
@@ -56,9 +56,9 @@ static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_SPI1_Init(void);
 /* USER CODE BEGIN PFP */
-void Set_Digit(uint8_t, uint8_t);
-void Set_Led(uint8_t, uint8_t, uint8_t);
-void Set_Dots(uint8_t, uint8_t);
+void Set_Digit(int, uint8_t, uint8_t);
+void Set_Led(int, uint8_t, uint8_t, uint8_t);
+void Set_Dots(int, uint8_t, uint8_t);
 void Set_None();
 
 void Start_Animation();
@@ -69,45 +69,49 @@ void Temp_Clock();
 /* USER CODE BEGIN 0 */
 
 // State Functions:
+void(*state)();
+
 
 void Start_Animation(){
-	Set_Digit(1, 127);
-	Set_Led(127,0,0);
+	Set_Digit(4, 1, 127);
+	Set_Led(4, 127,0,0);
 	HAL_Delay(1000);
 
-	Set_Digit(2, 127);
+	Set_Digit(4, 2, 127);
 	HAL_Delay(1000);
 
-	Set_Digit(3, 127);
+	Set_Digit(4, 3, 127);
 	HAL_Delay(1000);
 
-	Set_Digit(4, 127);
+	Set_Digit(4, 4, 127);
+	Set_Led(4, 0,127,0);
 	HAL_Delay(1000);
 
-	Set_Digit(5, 127);
+	Set_Digit(4, 5, 127);
 	HAL_Delay(1000);
 
-	Set_Digit(6, 127);
+	Set_Digit(4, 6, 127);
 	HAL_Delay(1000);
 
-	Set_Digit(7, 127);
+	Set_Digit(4, 7, 127);
 	HAL_Delay(1000);
 
-	Set_Digit(8, 127);
+	Set_Digit(4, 8, 127);
+	Set_Led(4, 0,0,127);
 	HAL_Delay(1000);
 
-	Set_Digit(9, 127);
+	Set_Digit(4, 9, 127);
 	HAL_Delay(1000);
 
-	Set_Digit(0, 127);
+	Set_Digit(4, 0, 127);
 	HAL_Delay(1000);
 
 	Set_None();
 
-	Set_Dots(0, 127);
+	Set_Dots(4, 0, 127);
 	HAL_Delay(1000);
 
-	Set_Dots(127, 0);
+	Set_Dots(4, 127, 0);
 	HAL_Delay(1000);
 
 	state = Temp_Clock;
@@ -118,7 +122,7 @@ void Temp_Clock() {
 	while(i<20) {
 		Set_None();
 		HAL_Delay(200);
-		Set_Digit(4, 127);
+		Set_Digit(4, 3, 127);
 		HAL_Delay(200);
 		i++;
 	}
@@ -162,8 +166,6 @@ int main(void)
   MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
 
-  // Default CS pin to high
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
 
   //print a test to serial monitor to make sure everything is working
   uart_buf_len = sprintf(uart_buf, "SPI TEST\r\n");
@@ -314,6 +316,12 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
@@ -321,6 +329,20 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PC7 */
+  GPIO_InitStruct.Pin = GPIO_PIN_7;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PA8 PA9 */
+  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PB6 */
   GPIO_InitStruct.Pin = GPIO_PIN_6;
@@ -332,7 +354,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void Set_Digit(uint8_t digit, uint8_t brightness)
+void Set_Digit(int location, uint8_t digit, uint8_t brightness)
 {
 	uint8_t EXIXE_DIGIT[16] = {0b10101010, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000};
 	if(digit != 0)
@@ -343,33 +365,135 @@ void Set_Digit(uint8_t digit, uint8_t brightness)
 	{
 		EXIXE_DIGIT[10] = brightness + 0b10000000;
 	}
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
+
+	//Set the proper CS pin to LOW
+	switch(location){
+	case 1:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
+		break;
+	case 2:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+		break;
+	case 3:
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
+		break;
+	case 4:
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
+		break;
+	}
 	HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DIGIT, 16, 100);
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+
+	//Set the proper CS pin to HIGH
+	switch(location){
+	case 1:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
+		break;
+	case 2:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+		break;
+	case 3:
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
+		break;
+	case 4:
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+		break;
+	}
 }
 
 void Set_None()
 {
 	uint8_t EXIXE_NONE[16] = {0b10101010, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000};
+	//turn the CS pin on high for each nixie
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
+
 	HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_NONE, 16, 100);
+
+	//turn the CS pin on high for each nixie
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
 }
 
-void Set_Led(uint8_t red, uint8_t green, uint8_t blue)
+void Set_Led(int location, uint8_t red, uint8_t green, uint8_t blue)
 {
 	uint8_t EXIXE_LED[16] = {0b10101010, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, red + 0b10000000, green + 0b10000000, blue + 0b10000000};
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
+
+	//Set the proper CS pin to LOW
+	switch(location){
+	case 1:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
+		break;
+	case 2:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+		break;
+	case 3:
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
+		break;
+	case 4:
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
+		break;
+	}
+
 	HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_LED, 16, 100);
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+
+	//Set the proper CS pin to HIGH
+	switch(location){
+	case 1:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
+		break;
+	case 2:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+		break;
+	case 3:
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
+		break;
+	case 4:
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+		break;
+	}
 }
 
-void Set_Dots(uint8_t left_brightness, uint8_t right_brightness)
+void Set_Dots(int location, uint8_t left_brightness, uint8_t right_brightness)
 {
 	uint8_t EXIXE_DOTS[16] = {0b10101010, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000, left_brightness + 0b10000000, right_brightness + 0b10000000, 0b00000000, 0b00000000, 0b00000000};
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
+
+	//Set the proper CS pin to LOW
+	switch(location){
+	case 1:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
+		break;
+	case 2:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+		break;
+	case 3:
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
+		break;
+	case 4:
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
+		break;
+	}
+
 	HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_DOTS, 16, 100);
-	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+
+	//Set the proper CS pin to HIGH
+	switch(location){
+	case 1:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
+		break;
+	case 2:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+		break;
+	case 3:
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
+		break;
+	case 4:
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+		break;
+	}
 }
 /* USER CODE END 4 */
 
