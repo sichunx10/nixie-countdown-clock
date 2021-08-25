@@ -43,8 +43,8 @@
 
 /* Private variables ---------------------------------------------------------*/
 SPI_HandleTypeDef hspi1;
-
 UART_HandleTypeDef huart2;
+void(*state)(); // This is a function pointer
 
 /* USER CODE BEGIN PV */
 
@@ -60,10 +60,70 @@ void Set_Digit(uint8_t, uint8_t);
 void Set_Led(uint8_t, uint8_t, uint8_t);
 void Set_Dots(uint8_t, uint8_t);
 void Set_None();
+
+void Start_Animation();
+void Temp_Clock();
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+// State Functions:
+
+void Start_Animation(){
+	Set_Digit(1, 127);
+	Set_Led(127,0,0);
+	HAL_Delay(1000);
+
+	Set_Digit(2, 127);
+	HAL_Delay(1000);
+
+	Set_Digit(3, 127);
+	HAL_Delay(1000);
+
+	Set_Digit(4, 127);
+	HAL_Delay(1000);
+
+	Set_Digit(5, 127);
+	HAL_Delay(1000);
+
+	Set_Digit(6, 127);
+	HAL_Delay(1000);
+
+	Set_Digit(7, 127);
+	HAL_Delay(1000);
+
+	Set_Digit(8, 127);
+	HAL_Delay(1000);
+
+	Set_Digit(9, 127);
+	HAL_Delay(1000);
+
+	Set_Digit(0, 127);
+	HAL_Delay(1000);
+
+	Set_None();
+
+	Set_Dots(0, 127);
+	HAL_Delay(1000);
+
+	Set_Dots(127, 0);
+	HAL_Delay(1000);
+
+	state = Temp_Clock;
+}
+
+void Temp_Clock() {
+	int i = 0;
+	while(i<20) {
+		Set_None();
+		HAL_Delay(200);
+		Set_Digit(4, 127);
+		HAL_Delay(200);
+		i++;
+	}
+	state = Start_Animation;
+}
 
 /* USER CODE END 0 */
 
@@ -76,6 +136,8 @@ int main(void)
   /* USER CODE BEGIN 1 */
 	char uart_buf[50]; //buffer for strings we want to print out to serial monitor
 	int uart_buf_len;
+
+	state = Start_Animation; //set the starting state
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -113,50 +175,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-  	Set_Digit(1, 127);
-  	Set_Led(127,0,0);
-  	HAL_Delay(1000);
-
-  	Set_Digit(2, 127);
-  	HAL_Delay(1000);
-
-  	Set_Digit(3, 127);
-  	HAL_Delay(1000);
-
-  	Set_Digit(4, 127);
-  	HAL_Delay(1000);
-
-  	Set_Digit(5, 127);
-  	HAL_Delay(1000);
-
-  	Set_Digit(6, 127);
-  	HAL_Delay(1000);
-
-  	Set_Digit(7, 127);
-  	HAL_Delay(1000);
-
-  	Set_Digit(8, 127);
-  	HAL_Delay(1000);
-
-  	Set_Digit(9, 127);
-  	HAL_Delay(1000);
-
-  	Set_Digit(0, 127);
-  	HAL_Delay(1000);
-
-  	Set_None();
-
-  	Set_Dots(0, 127);
-  	HAL_Delay(1000);
-
-  	Set_Dots(127, 0);
-  	HAL_Delay(1000);
-
-  	Set_None();
-  	HAL_Delay(1000);
-
-
-
+  	state();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
