@@ -73,6 +73,7 @@ void(*state)();
 
 
 void Start_Animation(){
+	Set_None();
 	Set_Digit(4, 1, 127);
 	Set_Led(4, 127,0,0);
 	HAL_Delay(1000);
@@ -113,18 +114,47 @@ void Start_Animation(){
 
 	Set_Dots(4, 127, 0);
 	HAL_Delay(1000);
+	Set_None();
+	HAL_Delay(100);
 
 	state = Temp_Clock;
 }
 
 void Temp_Clock() {
-	int i = 0;
-	while(i<20) {
-		Set_None();
-		HAL_Delay(200);
-		Set_Digit(4, 3, 127);
-		HAL_Delay(200);
-		i++;
+	int sec1 = 0;
+	int sec2 = 0;
+	int min1 = 6;
+	int min2 = 0;
+	int dots = 0;
+
+	while (min1 >= 0){
+		Set_Digit(1, min1, 127);
+		Set_Digit(2, min2, 127);
+		Set_Digit(3, sec1, 127);
+		Set_Digit(4, sec2, 127);
+		if(dots == 0){
+			Set_Dots(3, 127, 0);
+			dots = 1;
+		}else{
+			Set_Dots(3, 0, 0);
+			dots = 0;
+		}
+
+		HAL_Delay(1000);
+
+		sec2 -= 1;
+		if(sec2 < 0){
+			sec2 = 9;
+			sec1 -= 1;
+		}
+		if(sec1 < 0){
+			sec1 = 5;
+			min2 -= 1;
+		}
+		if(min2 < 0){
+			min2 = 9;
+			min1 -= 1;
+		}
 	}
 	state = Start_Animation;
 }
