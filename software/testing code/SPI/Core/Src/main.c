@@ -42,6 +42,8 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+RTC_HandleTypeDef hrtc;
+
 SPI_HandleTypeDef hspi1;
 
 UART_HandleTypeDef huart2;
@@ -55,6 +57,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_SPI1_Init(void);
+static void MX_RTC_Init(void);
 /* USER CODE BEGIN PFP */
 void Set_Digit(int, uint8_t, uint8_t);
 void Set_Led(int, uint8_t, uint8_t, uint8_t);
@@ -91,7 +94,14 @@ void Start_Animation(){
 	Set_Digit(4, 5, 127);
 	HAL_Delay(1000);
 
+	Set_Digit(4, 9, 127);
+	HAL_Delay(1000);
+
 	Set_Digit(4, 6, 127);
+	HAL_Delay(1000);
+
+	Set_Digit(4, 1, 127);
+	Set_Led(4, 127,0,0);
 	HAL_Delay(1000);
 
 	Set_Digit(4, 7, 127);
@@ -117,44 +127,83 @@ void Start_Animation(){
 	Set_None();
 	HAL_Delay(100);
 
-	state = Temp_Clock;
+	state = Start_Animation;
 }
 
 void Temp_Clock() {
-	int sec1 = 0;
-	int sec2 = 0;
-	int min1 = 6;
-	int min2 = 0;
-	int dots = 0;
+	while(1) {
+		//convert times to display digits
+		int timeToLaunchDay1 = timeToLaunchDay / 10;
+		int timeToLaunchDay2 = timeToLaunchDay % 10;
+		int timeToLaunchHour1 = timeToLaunchHour / 10;
+		int timeToLaunchHour2 = timeToLaunchHour % 10;
+		int timeToLaunchMin1 = timeToLaunchMin / 10;
+		int timeToLaunchMin2 = timeToLaunchMin % 10;
 
-	while (min1 >= 0){
-		Set_Digit(1, min1, 127);
-		Set_Digit(2, min2, 127);
-		Set_Digit(3, sec1, 127);
-		Set_Digit(4, sec2, 127);
-		if(dots == 0){
-			Set_Dots(3, 127, 0);
-			dots = 1;
-		}else{
-			Set_Dots(3, 0, 0);
-			dots = 0;
+		int timeToLaunchSec1 = timeToLaunchSec / 32;
+		int timeToLaunchSecTemp = timeToLaunchSec - timeToLaunchSec1 * 32;
+		int timeToLaunchSec2 = timeToLaunchSecTemp / 16;
+		timeToLaunchSecTemp = timeToLaunchSecTemp - timeToLaunchSec2 * 16;
+		int timeToLaunchSec3 = timeToLaunchSecTemp / 8;
+		timeToLaunchSecTemp = timeToLaunchSecTemp - timeToLaunchSec3 * 8;
+		int timeToLaunchSec4 = timeToLaunchSecTemp / 4;
+		timeToLaunchSecTemp = timeToLaunchSecTemp - timeToLaunchSec4 * 4;
+		int timeToLaunchSec5 = timeToLaunchSecTemp / 2;
+		int timeToLaunchSec6 = timeToLaunchSecTemp % 2;
+
+		//Display the time, will be in the format DDHHMM
+		Set_None();
+		HAL_Delay(10);
+		Set_Digit(1, timeToLaunchDay1, 127);
+		HAL_Delay(10);
+		Set_Digit(2, timeToLaunchDay2, 127);
+		HAL_Delay(10);
+		Set_Digit(3, timeToLaunchHour1, 127);
+		HAL_Delay(10);
+		Set_Digit(4, timeToLaunchHour2, 127);
+		HAL_Delay(10);
+		Set_Digit(5, timeToLaunchMin1, 127);
+		HAL_Delay(10);
+		Set_Digit(6, timeToLaunchMin2, 127);
+
+		//Display the seconds
+		if (timeToLaunchSec1 == 1){
+			Set_Dots(1, 0, 127);
+		}
+		if (timeToLaunchSec2 == 1){
+			Set_Dots(2, 0, 127);
+		}
+		if (timeToLaunchSec3 == 1){
+			Set_Dots(3, 0, 127);
+		}
+		if (timeToLaunchSec4 == 1){
+			Set_Dots(4, 0, 127);
+		}
+		if (timeToLaunchSec5 == 1){
+			Set_Dots(5, 0, 127);
+		}
+		if (timeToLaunchSec6 == 1){
+			Set_Dots(6, 0, 127);
 		}
 
-		HAL_Delay(1000);
-
-		sec2 -= 1;
-		if(sec2 < 0){
-			sec2 = 9;
-			sec1 -= 1;
+		//Subtract 1 second
+		if (timeToLaunchSec > 0){
+			timeToLaunchSec--;
+		} else {
+			timeToLaunchSec = 59;
+			if (timeToLaunchMin > 0){
+				timeToLaunchMin--;
+			} else {
+				timeToLaunchMin = 59;
+				if (timeToLaunchHour > 0){
+					timeToLaunchHour--;
+				} else {
+					timeToLaunchHour = 23;
+					timeToLaunchDay--;
+				}
+			}
 		}
-		if(sec1 < 0){
-			sec1 = 5;
-			min2 -= 1;
-		}
-		if(min2 < 0){
-			min2 = 9;
-			min1 -= 1;
-		}
+		HAL_Delay(940);
 	}
 	state = Start_Animation;
 }
@@ -168,8 +217,14 @@ void Temp_Clock() {
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	char uart_buf[50]; //buffer for strings we want to print out to serial monitor
-	int uart_buf_len;
+
+	int epochNow = 1675748940;
+	int epochLaunch = 1678430934;
+	int timeToLaunch = epochLaunch - epochNow;
+	int timeToLaunchSec = timeToLaunch % 60;
+	int timeToLaunchMin = (epochLaunch - timeToLaunchSec) % 60;
+	int timeToLaunchHour = (epochLaunch - timeToLaunchSec - timeToLaunchMin*60) % 24;
+	int timeToLaunchDay = (epochLaunch - timeToLaunchSec - timeToLaunchMin*60) / 24;
 
 	state = Start_Animation; //set the starting state
   /* USER CODE END 1 */
@@ -194,12 +249,13 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   MX_SPI1_Init();
+  MX_RTC_Init();
   /* USER CODE BEGIN 2 */
 
 
   //print a test to serial monitor to make sure everything is working
-  uart_buf_len = sprintf(uart_buf, "SPI TEST\r\n");
-  HAL_UART_Transmit(&huart2, (uint8_t *)uart_buf, uart_buf_len, 100);
+  //uart_buf_len = sprintf(uart_buf, "SPI TEST\r\n");
+  //HAL_UART_Transmit(&huart2, (uint8_t *)uart_buf, uart_buf_len, 100);
 
   /* USER CODE END 2 */
 
@@ -223,6 +279,7 @@ void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
 
   /** Configure the main internal regulator output voltage
   */
@@ -231,9 +288,10 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_LSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLM = 16;
@@ -257,6 +315,74 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_RTC;
+  PeriphClkInitStruct.RTCClockSelection = RCC_RTCCLKSOURCE_LSI;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+}
+
+/**
+  * @brief RTC Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_RTC_Init(void)
+{
+
+  /* USER CODE BEGIN RTC_Init 0 */
+
+  /* USER CODE END RTC_Init 0 */
+
+  RTC_TimeTypeDef sTime = {0};
+  RTC_DateTypeDef sDate = {0};
+
+  /* USER CODE BEGIN RTC_Init 1 */
+
+  /* USER CODE END RTC_Init 1 */
+  /** Initialize RTC Only
+  */
+  hrtc.Instance = RTC;
+  hrtc.Init.HourFormat = RTC_HOURFORMAT_24;
+  hrtc.Init.AsynchPrediv = 127;
+  hrtc.Init.SynchPrediv = 255;
+  hrtc.Init.OutPut = RTC_OUTPUT_DISABLE;
+  hrtc.Init.OutPutPolarity = RTC_OUTPUT_POLARITY_HIGH;
+  hrtc.Init.OutPutType = RTC_OUTPUT_TYPE_OPENDRAIN;
+  if (HAL_RTC_Init(&hrtc) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  /* USER CODE BEGIN Check_RTC_BKUP */
+
+  /* USER CODE END Check_RTC_BKUP */
+
+  /** Initialize RTC and set the Time and Date
+  */
+  sTime.Hours = 0x0;
+  sTime.Minutes = 0x0;
+  sTime.Seconds = 0x0;
+  sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+  sTime.StoreOperation = RTC_STOREOPERATION_RESET;
+  if (HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BCD) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sDate.WeekDay = RTC_WEEKDAY_MONDAY;
+  sDate.Month = RTC_MONTH_FEBRUARY;
+  sDate.Date = 0x6;
+  sDate.Year = 0x23;
+
+  if (HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN RTC_Init 2 */
+
+  /* USER CODE END RTC_Init 2 */
+
 }
 
 /**
@@ -346,19 +472,26 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10|GPIO_PIN_4|GPIO_PIN_6, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PB10 PB4 PB6 */
+  GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_4|GPIO_PIN_6;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PC7 */
   GPIO_InitStruct.Pin = GPIO_PIN_7;
@@ -373,13 +506,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : PB6 */
-  GPIO_InitStruct.Pin = GPIO_PIN_6;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
 
@@ -399,15 +525,21 @@ void Set_Digit(int location, uint8_t digit, uint8_t brightness)
 	//Set the proper CS pin to LOW
 	switch(location){
 	case 1:
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET);
 		break;
 	case 2:
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, GPIO_PIN_RESET);
 		break;
 	case 3:
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
 		break;
 	case 4:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+		break;
+	case 5:
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
+		break;
+	case 6:
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
 		break;
 	}
@@ -416,15 +548,21 @@ void Set_Digit(int location, uint8_t digit, uint8_t brightness)
 	//Set the proper CS pin to HIGH
 	switch(location){
 	case 1:
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
 		break;
 	case 2:
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, GPIO_PIN_SET);
 		break;
 	case 3:
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
 		break;
 	case 4:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+		break;
+	case 5:
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
+		break;
+	case 6:
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
 		break;
 	}
@@ -434,6 +572,8 @@ void Set_None()
 {
 	uint8_t EXIXE_NONE[16] = {0b10101010, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000, 0b10000000};
 	//turn the CS pin on high for each nixie
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
@@ -442,6 +582,8 @@ void Set_None()
 	HAL_SPI_Transmit(&hspi1, (uint8_t *)&EXIXE_NONE, 16, 100);
 
 	//turn the CS pin on high for each nixie
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
@@ -455,15 +597,21 @@ void Set_Led(int location, uint8_t red, uint8_t green, uint8_t blue)
 	//Set the proper CS pin to LOW
 	switch(location){
 	case 1:
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET);
 		break;
 	case 2:
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, GPIO_PIN_RESET);
 		break;
 	case 3:
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
 		break;
 	case 4:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+		break;
+	case 5:
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
+		break;
+	case 6:
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
 		break;
 	}
@@ -473,15 +621,21 @@ void Set_Led(int location, uint8_t red, uint8_t green, uint8_t blue)
 	//Set the proper CS pin to HIGH
 	switch(location){
 	case 1:
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
 		break;
 	case 2:
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, GPIO_PIN_SET);
 		break;
 	case 3:
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
 		break;
 	case 4:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+		break;
+	case 5:
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
+		break;
+	case 6:
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
 		break;
 	}
@@ -494,15 +648,21 @@ void Set_Dots(int location, uint8_t left_brightness, uint8_t right_brightness)
 	//Set the proper CS pin to LOW
 	switch(location){
 	case 1:
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_RESET);
 		break;
 	case 2:
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, GPIO_PIN_RESET);
 		break;
 	case 3:
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);
 		break;
 	case 4:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_RESET);
+		break;
+	case 5:
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
+		break;
+	case 6:
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
 		break;
 	}
@@ -512,15 +672,21 @@ void Set_Dots(int location, uint8_t left_brightness, uint8_t right_brightness)
 	//Set the proper CS pin to HIGH
 	switch(location){
 	case 1:
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, GPIO_PIN_SET);
 		break;
 	case 2:
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10, GPIO_PIN_SET);
 		break;
 	case 3:
-		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
 		break;
 	case 4:
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);
+		break;
+	case 5:
+		HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
+		break;
+	case 6:
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
 		break;
 	}
