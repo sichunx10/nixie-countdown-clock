@@ -77,133 +77,178 @@ void(*state)();
 
 void Start_Animation(){
 	Set_None();
-	Set_Digit(4, 1, 127);
-	Set_Led(4, 127,0,0);
-	HAL_Delay(1000);
-
-	Set_Digit(4, 2, 127);
-	HAL_Delay(1000);
-
-	Set_Digit(4, 3, 127);
-	HAL_Delay(1000);
-
-	Set_Digit(4, 4, 127);
-	Set_Led(4, 0,127,0);
-	HAL_Delay(1000);
-
-	Set_Digit(4, 5, 127);
-	HAL_Delay(1000);
-
-	Set_Digit(4, 9, 127);
-	HAL_Delay(1000);
-
-	Set_Digit(4, 6, 127);
-	HAL_Delay(1000);
-
-	Set_Digit(4, 1, 127);
-	Set_Led(4, 127,0,0);
-	HAL_Delay(1000);
-
-	Set_Digit(4, 7, 127);
-	HAL_Delay(1000);
-
-	Set_Digit(4, 8, 127);
-	Set_Led(4, 0,0,127);
-	HAL_Delay(1000);
-
-	Set_Digit(4, 9, 127);
-	HAL_Delay(1000);
-
-	Set_Digit(4, 0, 127);
-	HAL_Delay(1000);
-
-	Set_None();
-
-	Set_Dots(4, 0, 127);
-	HAL_Delay(1000);
-
-	Set_Dots(4, 127, 0);
-	HAL_Delay(1000);
-	Set_None();
 	HAL_Delay(100);
+	int day1 = 0;
+	int day2 = 0;
+	int hour1 = 0;
+	int hour2 = 0;
+	int min1 = 0;
+	int min2 = 0;
+	int sec1 = 0;
+	int sec2 = 0;
 
+	//Set Countdown
+
+	dayone:
+	while (1){
+		for (int i=0; i<10; i++) {
+			Set_Digit(5, i, 127);
+			HAL_Delay(1000);
+			day1 = i;
+			if(HAL_GPIO_ReadPin(GPIOC, B1_Pin) == GPIO_PIN_RESET){
+				goto daytwo;
+			}
+		}
+	}
+
+	daytwo:
+	while (1){
+		for (int i=0; i<10; i++) {
+			Set_Digit(1, i, 127);
+			HAL_Delay(1000);
+			day2 = i;
+			if(HAL_GPIO_ReadPin(GPIOC, B1_Pin) == GPIO_PIN_RESET){
+				goto hourone;
+			}
+		}
+	}
+
+	hourone:
+	while (1){
+		for (int i=0; i<10; i++) {
+			Set_Digit(1, i, 127);
+			HAL_Delay(1000);
+			hour1 = i;
+			if(HAL_GPIO_ReadPin(GPIOC, B1_Pin) == GPIO_PIN_RESET){
+				goto hourtwo;
+			}
+		}
+	}
+
+	hourtwo:
+	while (1){
+		for (int i=0; i<10; i++) {
+			Set_Digit(1, i, 127);
+			HAL_Delay(1000);
+			hour2 = i;
+			if(HAL_GPIO_ReadPin(GPIOC, B1_Pin) == GPIO_PIN_RESET){
+				goto minone;
+			}
+		}
+	}
+
+	minone:
+	while (1){
+		for (int i=0; i<10; i++) {
+			Set_Digit(1, i, 127);
+			HAL_Delay(1000);
+			min1 = i;
+			if(HAL_GPIO_ReadPin(GPIOC, B1_Pin) == GPIO_PIN_RESET){
+				goto mintwo;
+			}
+		}
+	}
+
+	mintwo:
+	while (1){
+		for (int i=0; i<10; i++) {
+			Set_Digit(1, i, 127);
+			HAL_Delay(1000);
+			min2 = i;
+			if(HAL_GPIO_ReadPin(GPIOC, B1_Pin) == GPIO_PIN_RESET){
+				goto clockloop;
+			}
+		}
+	}
+
+	clockloop:
+	// Clock Loop
+	while(1){
+		//calculate the next second
+		sec2 -= 1;
+		if (sec2 == -1){
+			sec1 -= 1;
+			sec2 = 9;
+		}
+		if (sec1 == -1){
+			min2 -= 1;
+			sec1 = 5;
+			sec2 = 9;
+		}
+		if (min2 == -1){
+			min1 -= 1;
+			min2 = 9;
+			sec1 = 5;
+			sec2 = 9;
+		}
+		if (min1 == -1){
+			hour2 -= 1;
+			min1 = 5;
+			min2 = 9;
+			sec1 = 5;
+			sec2 = 9;
+		}
+		if (hour2 == -1){
+			hour1 -= 1;
+			hour2 = 9;
+			min1 = 5;
+			min2 = 9;
+			sec1 = 5;
+			sec2 = 9;
+		}
+		if (hour1 == -1){
+			day2 -= 1;
+			hour1 = 2;
+			hour2 = 3;
+			min1 = 5;
+			min2 = 9;
+			sec1 = 5;
+			sec2 = 9;
+		}
+		if (day2 == -1){
+			day1 -= 1;
+			day2 = 9;
+			hour1 = 2;
+			hour2 = 3;
+			min1 = 5;
+			min2 = 9;
+			sec1 = 5;
+			sec2 = 9;
+		}
+		if (day1 == -1){
+			while(1){
+				//display zeros
+				Set_Digit(1, 0, 127);
+				Set_Digit(2, 0, 127);
+				Set_Digit(3, 0, 127);
+				Set_Digit(4, 0, 127);
+				Set_Digit(5, 0, 127);
+				Set_Digit(6, 0, 127);
+				HAL_Delay(900);
+
+				Set_None();
+				HAL_Delay(100);
+			}
+		}
+
+		//display the next second
+		Set_Digit(1, hour1, 127);
+		Set_Digit(2, hour2, 127);
+		Set_Digit(3, min1, 127);
+		Set_Digit(4, min2, 127);
+		Set_Digit(5, sec1, 127);
+		Set_Digit(6, sec2, 127);
+		HAL_Delay(900);
+
+		Set_None();
+		HAL_Delay(100);
+	}
 	state = Start_Animation;
 }
 
 void Temp_Clock() {
 	while(1) {
-		//convert times to display digits
-		int timeToLaunchDay1 = timeToLaunchDay / 10;
-		int timeToLaunchDay2 = timeToLaunchDay % 10;
-		int timeToLaunchHour1 = timeToLaunchHour / 10;
-		int timeToLaunchHour2 = timeToLaunchHour % 10;
-		int timeToLaunchMin1 = timeToLaunchMin / 10;
-		int timeToLaunchMin2 = timeToLaunchMin % 10;
-
-		int timeToLaunchSec1 = timeToLaunchSec / 32;
-		int timeToLaunchSecTemp = timeToLaunchSec - timeToLaunchSec1 * 32;
-		int timeToLaunchSec2 = timeToLaunchSecTemp / 16;
-		timeToLaunchSecTemp = timeToLaunchSecTemp - timeToLaunchSec2 * 16;
-		int timeToLaunchSec3 = timeToLaunchSecTemp / 8;
-		timeToLaunchSecTemp = timeToLaunchSecTemp - timeToLaunchSec3 * 8;
-		int timeToLaunchSec4 = timeToLaunchSecTemp / 4;
-		timeToLaunchSecTemp = timeToLaunchSecTemp - timeToLaunchSec4 * 4;
-		int timeToLaunchSec5 = timeToLaunchSecTemp / 2;
-		int timeToLaunchSec6 = timeToLaunchSecTemp % 2;
-
-		//Display the time, will be in the format DDHHMM
 		Set_None();
-		HAL_Delay(10);
-		Set_Digit(1, timeToLaunchDay1, 127);
-		HAL_Delay(10);
-		Set_Digit(2, timeToLaunchDay2, 127);
-		HAL_Delay(10);
-		Set_Digit(3, timeToLaunchHour1, 127);
-		HAL_Delay(10);
-		Set_Digit(4, timeToLaunchHour2, 127);
-		HAL_Delay(10);
-		Set_Digit(5, timeToLaunchMin1, 127);
-		HAL_Delay(10);
-		Set_Digit(6, timeToLaunchMin2, 127);
-
-		//Display the seconds
-		if (timeToLaunchSec1 == 1){
-			Set_Dots(1, 0, 127);
-		}
-		if (timeToLaunchSec2 == 1){
-			Set_Dots(2, 0, 127);
-		}
-		if (timeToLaunchSec3 == 1){
-			Set_Dots(3, 0, 127);
-		}
-		if (timeToLaunchSec4 == 1){
-			Set_Dots(4, 0, 127);
-		}
-		if (timeToLaunchSec5 == 1){
-			Set_Dots(5, 0, 127);
-		}
-		if (timeToLaunchSec6 == 1){
-			Set_Dots(6, 0, 127);
-		}
-
-		//Subtract 1 second
-		if (timeToLaunchSec > 0){
-			timeToLaunchSec--;
-		} else {
-			timeToLaunchSec = 59;
-			if (timeToLaunchMin > 0){
-				timeToLaunchMin--;
-			} else {
-				timeToLaunchMin = 59;
-				if (timeToLaunchHour > 0){
-					timeToLaunchHour--;
-				} else {
-					timeToLaunchHour = 23;
-					timeToLaunchDay--;
-				}
-			}
-		}
-		HAL_Delay(940);
 	}
 	state = Start_Animation;
 }
@@ -217,14 +262,6 @@ void Temp_Clock() {
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
-	int epochNow = 1675748940;
-	int epochLaunch = 1678430934;
-	int timeToLaunch = epochLaunch - epochNow;
-	int timeToLaunchSec = timeToLaunch % 60;
-	int timeToLaunchMin = (epochLaunch - timeToLaunchSec) % 60;
-	int timeToLaunchHour = (epochLaunch - timeToLaunchSec - timeToLaunchMin*60) % 24;
-	int timeToLaunchDay = (epochLaunch - timeToLaunchSec - timeToLaunchMin*60) / 24;
 
 	state = Start_Animation; //set the starting state
   /* USER CODE END 1 */
