@@ -92,7 +92,7 @@ void Start_Animation(){
 	dayone:
 	while (1){
 		for (int i=0; i<10; i++) {
-			Set_Digit(5, i, 127);
+			Set_Digit(1, i, 127);
 			HAL_Delay(1000);
 			day1 = i;
 			if(HAL_GPIO_ReadPin(GPIOC, B1_Pin) == GPIO_PIN_RESET){
@@ -104,7 +104,7 @@ void Start_Animation(){
 	daytwo:
 	while (1){
 		for (int i=0; i<10; i++) {
-			Set_Digit(1, i, 127);
+			Set_Digit(2, i, 127);
 			HAL_Delay(1000);
 			day2 = i;
 			if(HAL_GPIO_ReadPin(GPIOC, B1_Pin) == GPIO_PIN_RESET){
@@ -116,7 +116,7 @@ void Start_Animation(){
 	hourone:
 	while (1){
 		for (int i=0; i<10; i++) {
-			Set_Digit(1, i, 127);
+			Set_Digit(3, i, 127);
 			HAL_Delay(1000);
 			hour1 = i;
 			if(HAL_GPIO_ReadPin(GPIOC, B1_Pin) == GPIO_PIN_RESET){
@@ -128,7 +128,7 @@ void Start_Animation(){
 	hourtwo:
 	while (1){
 		for (int i=0; i<10; i++) {
-			Set_Digit(1, i, 127);
+			Set_Digit(4, i, 127);
 			HAL_Delay(1000);
 			hour2 = i;
 			if(HAL_GPIO_ReadPin(GPIOC, B1_Pin) == GPIO_PIN_RESET){
@@ -140,7 +140,7 @@ void Start_Animation(){
 	minone:
 	while (1){
 		for (int i=0; i<10; i++) {
-			Set_Digit(1, i, 127);
+			Set_Digit(5, i, 127);
 			HAL_Delay(1000);
 			min1 = i;
 			if(HAL_GPIO_ReadPin(GPIOC, B1_Pin) == GPIO_PIN_RESET){
@@ -152,7 +152,7 @@ void Start_Animation(){
 	mintwo:
 	while (1){
 		for (int i=0; i<10; i++) {
-			Set_Digit(1, i, 127);
+			Set_Digit(6, i, 127);
 			HAL_Delay(1000);
 			min2 = i;
 			if(HAL_GPIO_ReadPin(GPIOC, B1_Pin) == GPIO_PIN_RESET){
@@ -238,10 +238,7 @@ void Start_Animation(){
 		Set_Digit(4, min2, 127);
 		Set_Digit(5, sec1, 127);
 		Set_Digit(6, sec2, 127);
-		HAL_Delay(900);
-
-		Set_None();
-		HAL_Delay(100);
+		HAL_Delay(1000);
 	}
 	state = Start_Animation;
 }
